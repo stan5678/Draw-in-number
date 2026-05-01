@@ -6,109 +6,135 @@
 <title>動物數字填色遊戲</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:linear-gradient(135deg,#6c5ce7,#a29bfe);min-height:100vh;padding:16px}
+body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:linear-gradient(135deg,#6c5ce7,#a29bfe);min-height:100vh;padding:12px}
 .screen{display:none}.screen.active{display:block}
 
 /* START */
-#start-screen{max-width:560px;margin:0 auto;text-align:center;padding:60px 20px;color:#fff}
-#start-screen h1{font-size:2.6em;margin-bottom:10px;text-shadow:2px 4px 8px rgba(0,0,0,.3)}
-#start-screen p{font-size:1.1em;margin-bottom:40px;opacity:.9}
-.emoji-row{font-size:3em;margin-bottom:30px;animation:bob 1.8s ease-in-out infinite}
+#start-screen{max-width:520px;margin:0 auto;text-align:center;padding:60px 20px;color:#fff}
+#start-screen h1{font-size:2.4em;margin-bottom:10px;text-shadow:2px 4px 8px rgba(0,0,0,.3)}
+#start-screen p{font-size:1.05em;margin-bottom:36px;opacity:.9}
+.emoji-row{font-size:3em;margin-bottom:28px;animation:bob 1.8s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
 /* LEVEL SELECT */
-#level-select{max-width:680px;margin:0 auto;color:#fff}
-#level-select h2{text-align:center;font-size:1.9em;margin-bottom:20px;text-shadow:1px 2px 4px rgba(0,0,0,.3)}
-.level-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}
+#level-select{max-width:660px;margin:0 auto;color:#fff}
+#level-select h2{text-align:center;font-size:1.8em;margin-bottom:18px;text-shadow:1px 2px 4px rgba(0,0,0,.3)}
+.level-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}
 .lv-card{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.35);border-radius:14px;padding:12px 6px;text-align:center;cursor:pointer;transition:all .2s;color:#fff}
 .lv-card:hover{background:rgba(255,255,255,.35);transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
 .lv-card.done{background:rgba(253,203,110,.3);border-color:rgba(253,203,110,.7)}
-.lv-emoji{font-size:1.9em;margin-bottom:3px}.lv-num{font-size:.75em;opacity:.8}.lv-name{font-size:.88em;font-weight:700}.lv-star{color:#fdcb6e}
+.lv-emoji{font-size:1.9em;margin-bottom:3px}.lv-num{font-size:.73em;opacity:.8}.lv-name{font-size:.88em;font-weight:700}.lv-star{color:#fdcb6e}
 
 /* GAME */
-#game-screen{max-width:880px;margin:0 auto}
-.g-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;color:#fff;flex-wrap:wrap}
-.g-title{flex:1;font-size:1.35em;font-weight:700;text-shadow:1px 1px 4px rgba(0,0,0,.3)}
-.prog-wrap{width:130px}.prog-label{font-size:.72em;opacity:.8;margin-bottom:3px}
+#game-screen{max-width:900px;margin:0 auto}
+.g-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;color:#fff;flex-wrap:wrap}
+.g-title{flex:1;font-size:1.25em;font-weight:700;text-shadow:1px 1px 4px rgba(0,0,0,.3)}
+.prog-wrap{width:120px}
+.prog-label{font-size:.7em;opacity:.8;margin-bottom:3px}
 .prog-bar{background:rgba(255,255,255,.3);border-radius:8px;height:11px;overflow:hidden}
 .prog-fill{background:#fdcb6e;height:100%;border-radius:8px;transition:width .4s}
-.g-body{display:flex;gap:16px;align-items:flex-start}
+
+.g-body{display:flex;gap:14px;align-items:flex-start}
+
+/* Color Legend Panel */
+.legend-panel{width:140px;flex-shrink:0;background:rgba(255,255,255,.18);border-radius:16px;padding:10px 8px;border:1.5px solid rgba(255,255,255,.3)}
+.lp-title{color:#fff;text-align:center;font-size:.82em;margin-bottom:8px;font-weight:700;opacity:.9}
+.swatch-list{display:flex;flex-direction:column;gap:6px}
+.swatch{display:flex;align-items:center;border-radius:10px;overflow:hidden;cursor:pointer;border:3px solid rgba(255,255,255,.4);transition:all .2s;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.swatch:hover{border-color:#fff;transform:scale(1.04)}
+.swatch.sel{border-color:#fff;border-width:4px;transform:scale(1.06);box-shadow:0 0 0 3px rgba(255,255,255,.5),0 4px 12px rgba(0,0,0,.3)}
+.swatch-num{background:rgba(0,0,0,.35);color:#fff;font-weight:900;font-size:1em;width:30px;min-width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.swatch-color{flex:1;height:30px}
+
+/* SVG */
 .svg-wrap{flex:1;background:#fff;border-radius:18px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);min-width:0}
 .svg-wrap svg{width:100%;height:auto;display:block}
-.svg-wrap svg .region{cursor:pointer;transition:filter .15s}
+.svg-wrap svg .region{cursor:pointer;transition:filter .12s}
 .svg-wrap svg .region:hover{filter:brightness(.88)}
-.c-panel{width:160px;flex-shrink:0;background:rgba(255,255,255,.18);border-radius:16px;padding:12px 10px;border:1.5px solid rgba(255,255,255,.3)}
-.cp-title{color:#fff;text-align:center;font-size:.88em;margin-bottom:8px;font-weight:700}
-.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.c-btn{width:100%;aspect-ratio:1;border-radius:50%;border:3px solid rgba(255,255,255,.5);cursor:pointer;transition:all .2s;box-shadow:0 2px 6px rgba(0,0,0,.25)}
-.c-btn:hover{transform:scale(1.18);border-color:#fff}
-.c-btn.sel{border-color:#fff;border-width:4px;transform:scale(1.2);box-shadow:0 0 0 3px rgba(255,255,255,.5),0 4px 12px rgba(0,0,0,.3)}
-.cp-hint{color:rgba(255,255,255,.7);font-size:.72em;text-align:center;margin-top:8px;line-height:1.4}
+.svg-wrap svg .region.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translate(0)}25%{transform:translate(-4px,0)}75%{transform:translate(4px,0)}}
+.svg-wrap svg .region.correct{animation:flash .35s}
+@keyframes flash{0%,100%{filter:none}50%{filter:brightness(1.5)}}
+
+/* Actions */
+.g-actions{margin-top:10px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
 
 /* COMPLETE */
-#complete-screen{max-width:460px;margin:0 auto;text-align:center;color:#fff;padding:40px 20px}
-.c-stars{font-size:3.2em;margin-bottom:12px;animation:pop .5s ease}
+#complete-screen{max-width:440px;margin:0 auto;text-align:center;color:#fff;padding:36px 20px}
+.c-stars{font-size:3em;margin-bottom:10px;animation:pop .5s ease}
 @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
 #complete-screen h2{font-size:2em;margin-bottom:8px;text-shadow:2px 2px 6px rgba(0,0,0,.3)}
-#complete-screen p{font-size:1em;margin-bottom:18px;opacity:.9}
-.c-svg-wrap{max-width:260px;margin:0 auto 22px;background:#fff;border-radius:16px;padding:10px;box-shadow:0 8px 28px rgba(0,0,0,.25)}
+#complete-screen p{font-size:.98em;margin-bottom:16px;opacity:.9}
+.c-svg-wrap{max-width:250px;margin:0 auto 20px;background:#fff;border-radius:16px;padding:10px;box-shadow:0 8px 28px rgba(0,0,0,.25)}
 .c-svg-wrap svg{width:100%;height:auto;display:block}
 
-/* BUTTONS */
-.btn{display:inline-block;border:none;border-radius:50px;padding:11px 28px;font-size:1em;font-family:inherit;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 4px 14px rgba(0,0,0,.2);margin:4px}
-.btn:hover{transform:translateY(-3px);box-shadow:0 7px 18px rgba(0,0,0,.3)}
-.btn-w{background:#fff;color:#6c5ce7}.btn-y{background:#fdcb6e;color:#2d3436}
-.btn-sm{padding:8px 18px;font-size:.88em}
-
 /* TOAST */
-#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:rgba(45,52,54,.92);color:#fff;padding:10px 22px;border-radius:28px;font-size:.95em;transition:transform .3s;z-index:1000;pointer-events:none}
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:rgba(45,52,54,.92);color:#fff;padding:10px 20px;border-radius:28px;font-size:.92em;transition:transform .3s;z-index:1000;pointer-events:none;text-align:center;max-width:280px}
 #toast.show{transform:translateX(-50%) translateY(0)}
 
-@media(max-width:600px){
+/* BUTTONS */
+.btn{display:inline-block;border:none;border-radius:50px;padding:10px 26px;font-size:.97em;font-family:inherit;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 4px 14px rgba(0,0,0,.2);margin:3px}
+.btn:hover{transform:translateY(-3px);box-shadow:0 7px 18px rgba(0,0,0,.3)}
+.btn-w{background:#fff;color:#6c5ce7}.btn-y{background:#fdcb6e;color:#2d3436}
+.btn-sm{padding:8px 18px;font-size:.86em}
+
+/* Instruction banner */
+.tip-bar{background:rgba(255,255,255,.15);border-radius:10px;padding:7px 12px;color:#fff;font-size:.8em;text-align:center;margin-bottom:10px;border:1px solid rgba(255,255,255,.25)}
+
+@media(max-width:580px){
   .level-grid{grid-template-columns:repeat(3,1fr)}
   .g-body{flex-direction:column}
-  .c-panel{width:100%}.c-grid{grid-template-columns:repeat(6,1fr)}
+  .legend-panel{width:100%}
+  .swatch-list{flex-direction:row;flex-wrap:wrap;gap:6px}
+  .swatch{width:calc(25% - 5px);flex-direction:column;border-radius:10px}
+  .swatch-num{width:100%;height:22px;font-size:.85em}
+  .swatch-color{width:100%;height:28px}
   #start-screen h1{font-size:2em}
+  .g-title{font-size:1.1em}
 }
 </style>
 </head>
 <body>
 
+<!-- START -->
 <div id="start-screen" class="screen active">
   <div class="emoji-row">🦋🐱🐟🐸🐰🐝🦉🐧🦁🐢</div>
   <h1>動物填色遊戲</h1>
-  <p>選顏色，點區塊，讓動物亮起來！</p>
+  <p>選左邊的顏色，再點圖案上相同數字的區塊！</p>
   <button class="btn btn-w" onclick="showLevelSelect()">▶ 開始遊戲</button>
 </div>
 
+<!-- LEVEL SELECT -->
 <div id="level-select" class="screen">
   <h2>🗺 選擇關卡</h2>
   <div class="level-grid" id="levelGrid"></div>
   <div style="text-align:center"><button class="btn btn-w btn-sm" onclick="showScreen('start-screen')">← 返回</button></div>
 </div>
 
+<!-- GAME -->
 <div id="game-screen" class="screen">
   <div class="g-header">
     <button class="btn btn-w btn-sm" onclick="showLevelSelect()">← 返回</button>
     <div class="g-title" id="gTitle">第 1 關</div>
     <div class="prog-wrap">
-      <div class="prog-label">著色進度</div>
+      <div class="prog-label">完成進度</div>
       <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
     </div>
   </div>
+  <div class="tip-bar" id="tipBar">👈 先選左邊的顏色數字，再點圖案上相同數字的區塊</div>
   <div class="g-body">
-    <div class="svg-wrap" id="svgWrap"></div>
-    <div class="c-panel">
-      <div class="cp-title">🎨 選顏色</div>
-      <div class="c-grid" id="cGrid"></div>
-      <div class="cp-hint">先選顏色<br>再點圖案數字區塊</div>
-      <div style="text-align:center;margin-top:10px">
-        <button class="btn btn-w btn-sm" onclick="resetLevel()">↺ 重置</button>
+    <div class="legend-panel">
+      <div class="lp-title">🎨 顏色表</div>
+      <div class="swatch-list" id="swatchList"></div>
+      <div class="g-actions">
+        <button class="btn btn-w btn-sm" onclick="resetLevel()" style="margin-top:10px;width:100%">↺ 重置</button>
       </div>
     </div>
+    <div class="svg-wrap" id="svgWrap"></div>
   </div>
 </div>
 
+<!-- COMPLETE -->
 <div id="complete-screen" class="screen">
   <div class="c-stars">⭐⭐⭐</div>
   <h2 id="cTitle">完成了！</h2>
@@ -121,38 +147,42 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:linear
 <div id="toast"></div>
 
 <script>
-// ── Palette ──
-const PAL = ['#FF4D4D','#FF9500','#FFD700','#4CAF50','#87CEEB','#2196F3','#9C27B0','#FF69B4','#8B4513','#F5DEB3','#808080','#222222'];
-const PNAME = ['紅','橙','黃','綠','天藍','藍','紫','粉','棕','米','灰','黑'];
-
 // ── SVG helpers ──
-const S = 'fill="white" stroke="#2c3e50" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"';
-const S2= 'fill="white" stroke="#2c3e50" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"';
-function L(x,y,n,s=15){return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" font-size="${s}" font-weight="bold" fill="#444" pointer-events="none" style="user-select:none">${n}</text>`}
-function svg(body){return `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">${body}</svg>`}
+const S  = 'fill="white" stroke="#2c3e50" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"';
+const S2 = 'fill="white" stroke="#2c3e50" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"';
+function L(x,y,n,s=15){
+  return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" font-size="${s}" font-weight="bold" fill="#555" pointer-events="none" style="user-select:none">${n}</text>`;
+}
+function mksvg(b){return `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">${b}</svg>`}
 
-// ── Level data ──
+// ── Levels ──
 const LEVELS=[
 
-// 1. 蝴蝶
-{id:1,name:'蝴蝶',emoji:'🦋',hints:['#87CEEB','#FF8C00','#FFA500','#FFFACD','#FF6347','#8B4513','#D2691E','#333'],
-svg:svg(`
-<rect class="region" data-group="1" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="2" d="M200,225 C168,195 100,160 35,165 C8,173 6,205 22,233 C44,268 100,272 165,253 Z" ${S}/>
-<path class="region" data-group="2" d="M200,225 C232,195 300,160 365,165 C392,173 394,205 378,233 C356,268 300,272 235,253 Z" ${S}/>
-<path class="region" data-group="3" d="M196,248 C165,262 112,282 68,308 C22,338 15,378 38,393 C60,405 105,400 148,376 C178,358 196,322 196,282 Z" ${S}/>
-<path class="region" data-group="3" d="M204,248 C235,262 288,282 332,308 C378,338 385,378 362,393 C340,405 295,400 252,376 C222,358 204,322 204,282 Z" ${S}/>
-<ellipse class="region" data-group="4" cx="118" cy="208" rx="48" ry="28" ${S2}/>
-<ellipse class="region" data-group="4" cx="282" cy="208" rx="48" ry="28" ${S2}/>
-<ellipse class="region" data-group="5" cx="112" cy="322" rx="32" ry="22" ${S2}/>
-<ellipse class="region" data-group="5" cx="288" cy="322" rx="32" ry="22" ${S2}/>
-<ellipse class="region" data-group="6" cx="200" cy="272" rx="14" ry="62" ${S}/>
-<ellipse class="region" data-group="7" cx="200" cy="218" rx="17" ry="24" ${S}/>
-<circle class="region" data-group="7" cx="200" cy="183" r="22" ${S}/>
+// 1 蝴蝶
+{id:1,name:'蝴蝶',emoji:'🦋',
+palette:[
+  {n:1,c:'#87CEEB',label:'天藍'},{n:2,c:'#FF8C00',label:'橙色'},
+  {n:3,c:'#DAA520',label:'金色'},{n:4,c:'#FFFACD',label:'奶黃'},
+  {n:5,c:'#FF6347',label:'紅橙'},{n:6,c:'#8B4513',label:'棕色'},
+  {n:7,c:'#D2691E',label:'淺棕'},{n:8,c:'#333333',label:'深色'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<path class="region" data-group="2" id="r2_wul" d="M200,225 C168,195 100,160 35,165 C8,173 6,205 22,233 C44,268 100,272 165,253 Z" ${S}/>
+<path class="region" data-group="2" id="r2_wur" d="M200,225 C232,195 300,160 365,165 C392,173 394,205 378,233 C356,268 300,272 235,253 Z" ${S}/>
+<path class="region" data-group="3" id="r3_wll" d="M196,248 C165,262 112,282 68,308 C22,338 15,378 38,393 C60,405 105,400 148,376 C178,358 196,322 196,282 Z" ${S}/>
+<path class="region" data-group="3" id="r3_wlr" d="M204,248 C235,262 288,282 332,308 C378,338 385,378 362,393 C340,405 295,400 252,376 C222,358 204,322 204,282 Z" ${S}/>
+<ellipse class="region" data-group="4" id="r4_oul" cx="118" cy="208" rx="48" ry="28" ${S2}/>
+<ellipse class="region" data-group="4" id="r4_our" cx="282" cy="208" rx="48" ry="28" ${S2}/>
+<ellipse class="region" data-group="5" id="r5_sll" cx="112" cy="322" rx="32" ry="22" ${S2}/>
+<ellipse class="region" data-group="5" id="r5_slr" cx="288" cy="322" rx="32" ry="22" ${S2}/>
+<ellipse class="region" data-group="6" id="r6_abd" cx="200" cy="272" rx="14" ry="62" ${S}/>
+<ellipse class="region" data-group="7" id="r7_tho" cx="200" cy="218" rx="17" ry="24" ${S}/>
+<circle class="region" data-group="7" id="r7_hd" cx="200" cy="183" r="22" ${S}/>
 <line x1="192" y1="163" x2="172" y2="143" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>
 <line x1="208" y1="163" x2="228" y2="143" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>
-<circle class="region" data-group="8" cx="170" cy="140" r="9" ${S2}/>
-<circle class="region" data-group="8" cx="230" cy="140" r="9" ${S2}/>
+<circle class="region" data-group="8" id="r8_al" cx="170" cy="140" r="9" ${S2}/>
+<circle class="region" data-group="8" id="r8_ar" cx="230" cy="140" r="9" ${S2}/>
 <circle cx="194" cy="182" r="5" fill="#2c3e50" pointer-events="none"/>
 <circle cx="206" cy="182" r="5" fill="#2c3e50" pointer-events="none"/>
 <circle cx="195" cy="181" r="2" fill="white" pointer-events="none"/>
@@ -161,28 +191,33 @@ svg:svg(`
 <line x1="187" y1="268" x2="213" y2="268" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="187" y1="279" x2="213" y2="279" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="188" y1="290" x2="212" y2="290" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<line x1="189" y1="301" x2="211" y2="301" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 ${L(22,22,1,13)}${L(75,205,2)}${L(325,205,2)}${L(80,335,3)}${L(320,335,3)}
 ${L(118,208,4,12)}${L(282,208,4,12)}${L(112,322,5,12)}${L(288,322,5,12)}
 ${L(200,272,6,12)}${L(200,213,7,11)}${L(170,140,8,10)}${L(230,140,8,10)}
 `)},
 
-// 2. 貓
-{id:2,name:'貓咪',emoji:'🐱',hints:['#E8F5E9','#FF8C00','#FFF8DC','#FFB6C1','#FFDAB9','#FFF','#4CAF50'],
-svg:svg(`
-<rect class="region" data-group="1" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="2" d="M275,355 C340,325 390,295 396,248 C400,210 378,188 352,200 C328,212 320,242 308,268 C295,292 280,318 278,342 Z" ${S}/>
-<circle class="region" data-group="6" cx="356" cy="200" r="22" ${S2}/>
-<path class="region" data-group="2" d="M118,235 C108,270 106,322 110,370 C114,390 124,398 138,398 L262,398 C276,398 286,390 290,370 C294,322 292,270 282,235 C268,216 240,210 200,210 C160,210 132,216 118,235 Z" ${S}/>
-<polygon class="region" data-group="2" points="133,108,108,30,180,78" ${S}/>
-<polygon class="region" data-group="2" points="267,108,292,30,220,78" ${S}/>
-<circle class="region" data-group="2" cx="200" cy="160" r="80" ${S}/>
-<path class="region" data-group="3" d="M158,285 C158,258 176,245 200,245 C224,245 242,258 242,285 C242,348 226,396 200,396 C174,396 158,348 158,285 Z" ${S2}/>
-<polygon class="region" data-group="4" points="137,103,116,44,174,76" ${S2}/>
-<polygon class="region" data-group="4" points="263,103,284,44,226,76" ${S2}/>
-<ellipse class="region" data-group="5" cx="200" cy="178" rx="44" ry="30" ${S2}/>
-<circle class="region" data-group="7" cx="172" cy="148" r="18" ${S2}/>
-<circle class="region" data-group="7" cx="228" cy="148" r="18" ${S2}/>
+// 2 貓
+{id:2,name:'貓咪',emoji:'🐱',
+palette:[
+  {n:1,c:'#E8F5E9',label:'淺綠'},{n:2,c:'#FF8C00',label:'橘色'},
+  {n:3,c:'#FFF8DC',label:'奶白'},{n:4,c:'#FFB6C1',label:'粉紅'},
+  {n:5,c:'#FFDAB9',label:'蜜桃'},{n:6,c:'#F0F0F0',label:'白色'},
+  {n:7,c:'#4CAF50',label:'綠色'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<path class="region" data-group="2" id="r2_tail" d="M275,355 C340,325 390,295 396,248 C400,210 378,188 352,200 C328,212 320,242 308,268 C295,292 280,318 278,342 Z" ${S}/>
+<circle class="region" data-group="6" id="r6_tip" cx="356" cy="200" r="22" ${S2}/>
+<path class="region" data-group="2" id="r2_body" d="M118,235 C108,270 106,322 110,370 C114,390 124,398 138,398 L262,398 C276,398 286,390 290,370 C294,322 292,270 282,235 C268,216 240,210 200,210 C160,210 132,216 118,235 Z" ${S}/>
+<polygon class="region" data-group="2" id="r2_el" points="133,108,108,30,180,78" ${S}/>
+<polygon class="region" data-group="2" id="r2_er" points="267,108,292,30,220,78" ${S}/>
+<circle class="region" data-group="2" id="r2_hd" cx="200" cy="160" r="80" ${S}/>
+<path class="region" data-group="3" id="r3_belly" d="M158,285 C158,258 176,245 200,245 C224,245 242,258 242,285 C242,348 226,396 200,396 C174,396 158,348 158,285 Z" ${S2}/>
+<polygon class="region" data-group="4" id="r4_iel" points="137,103,116,44,174,76" ${S2}/>
+<polygon class="region" data-group="4" id="r4_ier" points="263,103,284,44,226,76" ${S2}/>
+<ellipse class="region" data-group="5" id="r5_muz" cx="200" cy="178" rx="44" ry="30" ${S2}/>
+<circle class="region" data-group="7" id="r7_eyl" cx="172" cy="148" r="18" ${S2}/>
+<circle class="region" data-group="7" id="r7_eyr" cx="228" cy="148" r="18" ${S2}/>
 <ellipse cx="172" cy="150" rx="9" ry="12" fill="#2c3e50" pointer-events="none"/>
 <ellipse cx="228" cy="150" rx="9" ry="12" fill="#2c3e50" pointer-events="none"/>
 <circle cx="169" cy="146" r="3" fill="white" pointer-events="none"/>
@@ -193,21 +228,27 @@ svg:svg(`
 <line x1="158" y1="184" x2="118" y2="184" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="242" y1="178" x2="282" y2="172" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="242" y1="184" x2="282" y2="184" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-${L(22,22,1,13)}${L(200,130,2)}${L(200,350,2)}${L(135,55,2,11)}${L(265,55,2,11)}
-${L(200,290,3)}${L(148,65,4,12)}${L(252,65,4,12)}${L(200,178,5,12)}
+${L(22,22,1,13)}${L(200,130,2)}${L(200,350,2)}${L(135,52,2,11)}${L(265,52,2,11)}
+${L(200,290,3)}${L(148,62,4,12)}${L(252,62,4,12)}${L(200,178,5,12)}
 ${L(356,200,6,11)}${L(172,148,7,11)}${L(228,148,7,11)}
 `)},
 
-// 3. 金魚
-{id:3,name:'金魚',emoji:'🐟',hints:['#87CEEB','#FF6B35','#FF4500','#FFA500','#FFF8DC','#FFF','#FF6B35'],
-svg:svg(`
-<rect class="region" data-group="1" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="3" d="M308,178 C340,138 392,112 400,90 C388,140 382,168 398,200 C382,232 388,260 400,310 C392,288 340,262 308,222 Z" ${S}/>
-<path class="region" data-group="4" d="M178,98 C188,70 210,48 232,44 C245,55 248,75 236,94 Z" ${S2}/>
-<path class="region" data-group="7" d="M218,190 C228,207 235,230 224,250 C210,260 195,252 190,240 C196,220 206,200 218,190 Z" ${S2}/>
-<path class="region" data-group="2" d="M310,200 C310,148 278,108 220,94 C162,80 110,96 84,132 C58,165 58,236 84,270 C110,305 162,320 220,305 C278,290 310,252 310,200 Z" ${S}/>
-<path class="region" data-group="5" d="M92,238 C108,278 148,310 200,308 C248,308 286,278 302,238 C278,262 250,272 220,268 C186,264 158,250 130,230 Z" ${S2}/>
-<circle class="region" data-group="6" cx="112" cy="178" r="24" ${S2}/>
+// 3 金魚
+{id:3,name:'金魚',emoji:'🐟',
+palette:[
+  {n:1,c:'#87CEEB',label:'水藍'},{n:2,c:'#FF6B35',label:'橘紅'},
+  {n:3,c:'#CC2200',label:'深紅'},{n:4,c:'#FFA500',label:'橙色'},
+  {n:5,c:'#FFF8DC',label:'奶黃'},{n:6,c:'#FFFFFF',label:'白色'},
+  {n:7,c:'#FF9A7A',label:'鮭魚'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<path class="region" data-group="3" id="r3_tail" d="M308,178 C340,138 392,112 400,90 C388,140 382,168 398,200 C382,232 388,260 400,310 C392,288 340,262 308,222 Z" ${S}/>
+<path class="region" data-group="4" id="r4_dfin" d="M178,98 C188,70 210,48 232,44 C245,55 248,75 236,94 Z" ${S2}/>
+<path class="region" data-group="7" id="r7_pfin" d="M218,190 C228,207 235,230 224,250 C210,260 195,252 190,240 C196,220 206,200 218,190 Z" ${S2}/>
+<path class="region" data-group="2" id="r2_body" d="M310,200 C310,148 278,108 220,94 C162,80 110,96 84,132 C58,165 58,236 84,270 C110,305 162,320 220,305 C278,290 310,252 310,200 Z" ${S}/>
+<path class="region" data-group="5" id="r5_belly" d="M92,238 C108,278 148,310 200,308 C248,308 286,278 302,238 C278,262 250,272 220,268 C186,264 158,250 130,230 Z" ${S2}/>
+<circle class="region" data-group="6" id="r6_eye" cx="112" cy="178" r="24" ${S2}/>
 <circle cx="116" cy="180" r="12" fill="#2c3e50" pointer-events="none"/>
 <circle cx="112" cy="175" r="4" fill="white" pointer-events="none"/>
 <path d="M84,200 Q76,208 84,215" fill="none" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
@@ -215,25 +256,30 @@ svg:svg(`
 <path d="M210,135 Q228,152 210,168" fill="none" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
 <path d="M242,142 Q258,158 240,174" fill="none" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
 <path d="M165,172 Q180,188 162,204" fill="none" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
-<path d="M198,168 Q215,185 196,201" fill="none" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
 ${L(22,22,1,13)}${L(200,195,2)}${L(376,200,3)}${L(210,66,4,12)}
 ${L(200,290,5,12)}${L(112,178,6,11)}${L(210,228,7,12)}
 `)},
 
-// 4. 青蛙
-{id:4,name:'青蛙',emoji:'🐸',hints:['#90EE90','#2E8B57','#98FB98','#FFF','#FFD700','#1B6B3A','#228B22'],
-svg:svg(`
-<rect class="region" data-group="1" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="6" d="M88,315 C60,335 22,348 8,375 C12,396 35,402 58,392 C82,378 108,350 118,318 Z" ${S}/>
-<path class="region" data-group="6" d="M312,315 C340,335 378,348 392,375 C388,396 365,402 342,392 C318,378 292,350 282,318 Z" ${S}/>
-<path class="region" data-group="7" d="M88,268 C58,275 25,288 12,315 C16,332 30,338 44,330 C68,315 86,290 92,272 Z" ${S}/>
-<path class="region" data-group="7" d="M312,268 C342,275 375,288 388,315 C384,332 370,338 356,330 C332,315 314,290 308,272 Z" ${S}/>
-<path class="region" data-group="2" d="M80,288 C80,222 120,172 200,168 C280,172 320,222 320,288 C320,342 286,376 248,388 C228,395 172,395 152,388 C114,376 80,342 80,288 Z" ${S}/>
-<ellipse class="region" data-group="3" cx="200" cy="295" rx="85" ry="80" ${S2}/>
-<circle class="region" data-group="4" cx="148" cy="175" r="40" ${S}/>
-<circle class="region" data-group="4" cx="252" cy="175" r="40" ${S}/>
-<circle class="region" data-group="5" cx="148" cy="180" r="22" ${S2}/>
-<circle class="region" data-group="5" cx="252" cy="180" r="22" ${S2}/>
+// 4 青蛙
+{id:4,name:'青蛙',emoji:'🐸',
+palette:[
+  {n:1,c:'#B2DFDB',label:'薄荷'},{n:2,c:'#2E8B57',label:'深綠'},
+  {n:3,c:'#98FB98',label:'淺綠'},{n:4,c:'#FFFFFF',label:'白色'},
+  {n:5,c:'#FFD700',label:'金黃'},{n:6,c:'#1B5E20',label:'墨綠'},
+  {n:7,c:'#388E3C',label:'草綠'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<path class="region" data-group="6" id="r6_bll" d="M88,315 C60,335 22,348 8,375 C12,396 35,402 58,392 C82,378 108,350 118,318 Z" ${S}/>
+<path class="region" data-group="6" id="r6_blr" d="M312,315 C340,335 378,348 392,375 C388,396 365,402 342,392 C318,378 292,350 282,318 Z" ${S}/>
+<path class="region" data-group="7" id="r7_al" d="M88,268 C58,275 25,288 12,315 C16,332 30,338 44,330 C68,315 86,290 92,272 Z" ${S}/>
+<path class="region" data-group="7" id="r7_ar" d="M312,268 C342,275 375,288 388,315 C384,332 370,338 356,330 C332,315 314,290 308,272 Z" ${S}/>
+<path class="region" data-group="2" id="r2_body" d="M80,288 C80,222 120,172 200,168 C280,172 320,222 320,288 C320,342 286,376 248,388 C228,395 172,395 152,388 C114,376 80,342 80,288 Z" ${S}/>
+<ellipse class="region" data-group="3" id="r3_belly" cx="200" cy="295" rx="85" ry="80" ${S2}/>
+<circle class="region" data-group="4" id="r4_ewl" cx="148" cy="175" r="40" ${S}/>
+<circle class="region" data-group="4" id="r4_ewr" cx="252" cy="175" r="40" ${S}/>
+<circle class="region" data-group="5" id="r5_eil" cx="148" cy="180" r="22" ${S2}/>
+<circle class="region" data-group="5" id="r5_eir" cx="252" cy="180" r="22" ${S2}/>
 <ellipse cx="148" cy="182" rx="10" ry="14" fill="#2c3e50" pointer-events="none"/>
 <ellipse cx="252" cy="182" rx="10" ry="14" fill="#2c3e50" pointer-events="none"/>
 <circle cx="144" cy="177" r="4" fill="white" pointer-events="none"/>
@@ -241,28 +287,32 @@ svg:svg(`
 <path d="M162,308 Q200,325 238,308" fill="none" stroke="#2c3e50" stroke-width="2.5" pointer-events="none"/>
 <circle cx="188" cy="228" r="5" fill="#2c3e50" pointer-events="none"/>
 <circle cx="212" cy="228" r="5" fill="#2c3e50" pointer-events="none"/>
-<path d="M168,268 Q200,278 232,268" fill="none" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
-<path d="M162,290 Q200,302 238,290" fill="none" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
 ${L(22,22,1,13)}${L(200,340,2)}${L(200,295,3)}
 ${L(148,175,4,12)}${L(252,175,4,12)}${L(148,180,5,10)}${L(252,180,5,10)}
 ${L(55,365,6,12)}${L(345,365,6,12)}${L(38,300,7,12)}${L(362,300,7,12)}
 `)},
 
-// 5. 兔子
-{id:5,name:'兔子',emoji:'🐰',hints:['#E8EAF6','#ECEFF1','#F8BBD9','#F5F5F5','#FF8FAB','#FFF','#FF69B4'],
-svg:svg(`
-<rect class="region" data-group="1" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="2" d="M145,178 C138,130 124,58 126,16 C132,7 155,7 160,16 C165,58 158,130 155,178 Z" ${S}/>
-<path class="region" data-group="2" d="M255,178 C262,130 276,58 274,16 C268,7 245,7 240,16 C235,58 242,130 245,178 Z" ${S}/>
-<path class="region" data-group="3" d="M147,174 C141,130 130,62 132,22 C136,15 155,15 158,22 C159,62 153,130 148,174 Z" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
-<path class="region" data-group="3" d="M253,174 C259,130 270,62 268,22 C264,15 245,15 242,22 C241,62 247,130 252,174 Z" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
-<path class="region" data-group="2" d="M118,262 C108,296 106,338 110,378 C113,394 122,402 138,402 L262,402 C278,402 287,394 290,378 C294,338 292,296 282,262 C268,242 240,236 200,236 C160,236 132,242 118,262 Z" ${S}/>
-<circle class="region" data-group="2" cx="200" cy="192" r="78" ${S}/>
-<circle class="region" data-group="6" cx="292" cy="358" r="30" ${S2}/>
-<ellipse class="region" data-group="4" cx="200" cy="328" rx="60" ry="72" ${S2}/>
-<ellipse class="region" data-group="7" cx="200" cy="204" rx="32" ry="24" ${S2}/>
-<circle class="region" data-group="5" cx="170" cy="175" r="18" ${S2}/>
-<circle class="region" data-group="5" cx="230" cy="175" r="18" ${S2}/>
+// 5 兔子
+{id:5,name:'兔子',emoji:'🐰',
+palette:[
+  {n:1,c:'#EDE7F6',label:'薰衣'},{n:2,c:'#E0E0E0',label:'淺灰'},
+  {n:3,c:'#F8BBD9',label:'粉紅'},{n:4,c:'#F5F5F5',label:'白色'},
+  {n:5,c:'#E91E63',label:'桃紅'},{n:6,c:'#FAFAFA',label:'純白'},
+  {n:7,c:'#F48FB1',label:'嫩粉'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<path class="region" data-group="2" id="r2_el" d="M145,178 C138,130 124,58 126,16 C132,7 155,7 160,16 C165,58 158,130 155,178 Z" ${S}/>
+<path class="region" data-group="2" id="r2_er" d="M255,178 C262,130 276,58 274,16 C268,7 245,7 240,16 C235,58 242,130 245,178 Z" ${S}/>
+<path class="region" data-group="3" id="r3_iel" d="M147,174 C141,130 130,62 132,22 C136,15 155,15 158,22 C159,62 153,130 148,174 Z" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<path class="region" data-group="3" id="r3_ier" d="M253,174 C259,130 270,62 268,22 C264,15 245,15 242,22 C241,62 247,130 252,174 Z" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<path class="region" data-group="2" id="r2_body" d="M118,262 C108,296 106,338 110,378 C113,394 122,402 138,402 L262,402 C278,402 287,394 290,378 C294,338 292,296 282,262 C268,242 240,236 200,236 C160,236 132,242 118,262 Z" ${S}/>
+<circle class="region" data-group="2" id="r2_hd" cx="200" cy="192" r="78" ${S}/>
+<circle class="region" data-group="6" id="r6_tail" cx="292" cy="358" r="30" ${S2}/>
+<ellipse class="region" data-group="4" id="r4_belly" cx="200" cy="328" rx="60" ry="72" ${S2}/>
+<ellipse class="region" data-group="7" id="r7_muz" cx="200" cy="204" rx="32" ry="24" ${S2}/>
+<circle class="region" data-group="5" id="r5_eyl" cx="170" cy="175" r="18" ${S2}/>
+<circle class="region" data-group="5" id="r5_eyr" cx="230" cy="175" r="18" ${S2}/>
 <circle cx="173" cy="177" r="10" fill="#2c3e50" pointer-events="none"/>
 <circle cx="233" cy="177" r="10" fill="#2c3e50" pointer-events="none"/>
 <circle cx="170" cy="173" r="3.5" fill="white" pointer-events="none"/>
@@ -278,25 +328,31 @@ ${L(200,328,4,12)}${L(170,175,5,11)}${L(230,175,5,11)}
 ${L(292,358,6,11)}${L(200,204,7,11)}
 `)},
 
-// 6. 蜜蜂
-{id:6,name:'蜜蜂',emoji:'🐝',hints:['#87CEEB','#FFD700','#222','#DFF0FF','#FFD700','#222','#222'],
-svg:svg(`
-<rect class="region" data-group="1" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<ellipse class="region" data-group="4" cx="130" cy="198" rx="68" ry="36" ${S2}/>
-<ellipse class="region" data-group="4" cx="270" cy="198" rx="68" ry="36" ${S2}/>
-<ellipse class="region" data-group="4" cx="142" cy="232" rx="50" ry="26" ${S2}/>
-<ellipse class="region" data-group="4" cx="258" cy="232" rx="50" ry="26" ${S2}/>
-<path class="region" data-group="7" d="M192,358 C196,372 199,392 200,400 C201,392 204,372 208,358 C204,350 196,350 192,358 Z" ${S2}/>
-<path class="region" data-group="2" d="M138,240 C143,220 165,210 200,210 C235,210 257,220 262,240 C258,255 238,262 200,262 C162,262 142,255 138,240 Z" ${S}/>
-<path class="region" data-group="3" d="M136,258 C141,246 163,240 200,240 C237,240 259,246 264,258 C260,275 238,282 200,282 C162,282 140,275 136,258 Z" ${S}/>
-<path class="region" data-group="2" d="M135,278 C140,265 162,258 200,258 C238,258 260,265 265,278 C260,295 238,302 200,302 C162,302 140,295 135,278 Z" ${S}/>
-<path class="region" data-group="3" d="M134,298 C140,284 162,278 200,278 C238,278 260,284 266,298 C262,318 240,328 200,328 C160,328 138,318 134,298 Z" ${S}/>
-<path class="region" data-group="2" d="M135,324 C140,308 162,298 200,298 C238,298 260,308 265,324 C262,352 248,368 200,368 C152,368 138,352 135,324 Z" ${S}/>
-<circle class="region" data-group="5" cx="200" cy="158" r="54" ${S}/>
+// 6 蜜蜂
+{id:6,name:'蜜蜂',emoji:'🐝',
+palette:[
+  {n:1,c:'#87CEEB',label:'天藍'},{n:2,c:'#FFD700',label:'黃色'},
+  {n:3,c:'#222222',label:'黑色'},{n:4,c:'#DDEEFF',label:'淡藍'},
+  {n:5,c:'#FFC107',label:'琥珀'},{n:6,c:'#444444',label:'深灰'},
+  {n:7,c:'#111111',label:'深黑'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<ellipse class="region" data-group="4" id="r4_wul" cx="130" cy="198" rx="68" ry="36" ${S2}/>
+<ellipse class="region" data-group="4" id="r4_wur" cx="270" cy="198" rx="68" ry="36" ${S2}/>
+<ellipse class="region" data-group="4" id="r4_wll" cx="142" cy="232" rx="50" ry="26" ${S2}/>
+<ellipse class="region" data-group="4" id="r4_wlr" cx="258" cy="232" rx="50" ry="26" ${S2}/>
+<path class="region" data-group="7" id="r7_sting" d="M192,358 C196,372 199,392 200,400 C201,392 204,372 208,358 C204,350 196,350 192,358 Z" ${S2}/>
+<path class="region" data-group="2" id="r2_y1" d="M138,240 C143,220 165,210 200,210 C235,210 257,220 262,240 C258,255 238,262 200,262 C162,262 142,255 138,240 Z" ${S}/>
+<path class="region" data-group="3" id="r3_b1" d="M136,258 C141,246 163,240 200,240 C237,240 259,246 264,258 C260,275 238,282 200,282 C162,282 140,275 136,258 Z" ${S}/>
+<path class="region" data-group="2" id="r2_y2" d="M135,278 C140,265 162,258 200,258 C238,258 260,265 265,278 C260,295 238,302 200,302 C162,302 140,295 135,278 Z" ${S}/>
+<path class="region" data-group="3" id="r3_b2" d="M134,298 C140,284 162,278 200,278 C238,278 260,284 266,298 C262,318 240,328 200,328 C160,328 138,318 134,298 Z" ${S}/>
+<path class="region" data-group="2" id="r2_y3" d="M135,324 C140,308 162,298 200,298 C238,298 260,308 265,324 C262,352 248,368 200,368 C152,368 138,352 135,324 Z" ${S}/>
+<circle class="region" data-group="5" id="r5_hd" cx="200" cy="158" r="54" ${S}/>
 <line x1="182" y1="107" x2="162" y2="82" stroke="#2c3e50" stroke-width="2.5" pointer-events="none"/>
 <line x1="218" y1="107" x2="238" y2="82" stroke="#2c3e50" stroke-width="2.5" pointer-events="none"/>
-<circle class="region" data-group="6" cx="158" cy="78" r="11" ${S2}/>
-<circle class="region" data-group="6" cx="242" cy="78" r="11" ${S2}/>
+<circle class="region" data-group="6" id="r6_al" cx="158" cy="78" r="11" ${S2}/>
+<circle class="region" data-group="6" id="r6_ar" cx="242" cy="78" r="11" ${S2}/>
 <circle cx="180" cy="152" r="15" fill="white" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
 <circle cx="220" cy="152" r="15" fill="white" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
 <circle cx="183" cy="154" r="8" fill="#2c3e50" pointer-events="none"/>
@@ -309,29 +365,35 @@ ${L(72,198,4,12)}${L(328,198,4,12)}${L(200,158,5)}
 ${L(158,78,6,10)}${L(242,78,6,10)}${L(200,396,7,10)}
 `)},
 
-// 7. 貓頭鷹
-{id:7,name:'貓頭鷹',emoji:'🦉',hints:['#1a237e','#8B6914','#4A3728','#FFF8DC','#FFD700','#FF8C00','#FF8C00','#5D4037'],
-svg:svg(`
-<rect class="region" data-group="1" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<polygon class="region" data-group="8" points="148,88,126,24,178,70" ${S}/>
-<polygon class="region" data-group="8" points="252,88,274,24,222,70" ${S}/>
-<path class="region" data-group="3" d="M90,288 C62,312 42,355 46,388 L88,390 C105,350 112,308 95,285 Z" ${S}/>
-<path class="region" data-group="3" d="M310,288 C338,312 358,355 354,388 L312,390 C295,350 288,308 305,285 Z" ${S}/>
-<path class="region" data-group="2" d="M88,390 C88,312 112,248 142,212 C162,185 182,172 200,172 C218,172 238,185 258,212 C288,248 312,312 312,390 Z" ${S}/>
-<circle class="region" data-group="2" cx="200" cy="158" r="98" ${S}/>
-<ellipse class="region" data-group="4" cx="200" cy="163" rx="74" ry="82" ${S2}/>
-<circle class="region" data-group="5" cx="170" cy="148" r="32" ${S}/>
-<circle class="region" data-group="5" cx="230" cy="148" r="32" ${S}/>
+// 7 貓頭鷹
+{id:7,name:'貓頭鷹',emoji:'🦉',
+palette:[
+  {n:1,c:'#1A237E',label:'深藍'},{n:2,c:'#8B6914',label:'土黃'},
+  {n:3,c:'#4A3728',label:'深棕'},{n:4,c:'#FFF8DC',label:'奶白'},
+  {n:5,c:'#FFD700',label:'金黃'},{n:6,c:'#FF8C00',label:'橙色'},
+  {n:7,c:'#FF7043',label:'橘色'},{n:8,c:'#5D4037',label:'咖啡'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<polygon class="region" data-group="8" id="r8_etl" points="148,88,126,24,178,70" ${S}/>
+<polygon class="region" data-group="8" id="r8_etr" points="252,88,274,24,222,70" ${S}/>
+<path class="region" data-group="3" id="r3_wl" d="M90,288 C62,312 42,355 46,388 L88,390 C105,350 112,308 95,285 Z" ${S}/>
+<path class="region" data-group="3" id="r3_wr" d="M310,288 C338,312 358,355 354,388 L312,390 C295,350 288,308 305,285 Z" ${S}/>
+<path class="region" data-group="2" id="r2_body" d="M88,390 C88,312 112,248 142,212 C162,185 182,172 200,172 C218,172 238,185 258,212 C288,248 312,312 312,390 Z" ${S}/>
+<circle class="region" data-group="2" id="r2_hd" cx="200" cy="158" r="98" ${S}/>
+<ellipse class="region" data-group="4" id="r4_face" cx="200" cy="163" rx="74" ry="82" ${S2}/>
+<circle class="region" data-group="5" id="r5_eyl" cx="170" cy="148" r="32" ${S}/>
+<circle class="region" data-group="5" id="r5_eyr" cx="230" cy="148" r="32" ${S}/>
 <circle cx="170" cy="152" r="18" fill="#2c3e50" pointer-events="none"/>
 <circle cx="230" cy="152" r="18" fill="#2c3e50" pointer-events="none"/>
 <circle cx="164" cy="144" r="6" fill="white" pointer-events="none"/>
 <circle cx="224" cy="144" r="6" fill="white" pointer-events="none"/>
-<polygon class="region" data-group="6" points="186,182,214,182,200,210" ${S}/>
+<polygon class="region" data-group="6" id="r6_beak" points="186,182,214,182,200,210" ${S}/>
 <path d="M128,280 Q148,265 168,280 Q188,295 208,280" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <path d="M128,312 Q148,297 168,312 Q188,327 208,312 Q228,297 248,312" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <path d="M128,344 Q148,329 168,344 Q188,359 208,344 Q228,329 248,344 Q268,329 288,344" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<path class="region" data-group="7" d="M148,388 C136,398 118,407 106,412 L122,412 C136,403 148,395 156,388 C164,395 170,403 178,412 L194,412 C185,400 168,386 168,372 Z" ${S2}/>
-<path class="region" data-group="7" d="M252,388 C264,398 282,407 294,412 L278,412 C264,403 252,395 244,388 C236,395 230,403 222,412 L206,412 C215,400 232,386 232,372 Z" ${S2}/>
+<path class="region" data-group="7" id="r7_fl" d="M148,388 C136,398 118,407 106,412 L122,412 C136,403 148,395 156,388 C164,395 170,403 178,412 L194,412 C185,400 168,386 168,372 Z" ${S2}/>
+<path class="region" data-group="7" id="r7_fr" d="M252,388 C264,398 282,407 294,412 L278,412 C264,403 252,395 244,388 C236,395 230,403 222,412 L206,412 C215,400 232,386 232,372 Z" ${S2}/>
 <rect x="0" y="388" width="400" height="18" rx="4" fill="#6D4C41" stroke="#4A2E20" stroke-width="2" pointer-events="none"/>
 ${L(22,22,1,13)}${L(200,355,2)}${L(68,345,3,12)}${L(332,345,3,12)}
 ${L(200,163,4,12)}${L(170,148,5,12)}${L(230,148,5,12)}
@@ -339,21 +401,27 @@ ${L(200,196,6,11)}${L(130,400,7,10)}${L(270,400,7,10)}
 ${L(152,50,8,11)}${L(248,50,8,11)}
 `)},
 
-// 8. 企鵝
-{id:8,name:'企鵝',emoji:'🐧',hints:['#87CEEB','#222','#FFF','#FF8C00','#FF8C00','#FFF','#FFF'],
-svg:svg(`
-<rect class="region" data-group="1" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="2" d="M105,228 C72,242 40,268 28,298 C22,322 30,342 48,344 C68,346 90,320 102,290 C112,265 110,238 105,228 Z" ${S}/>
-<path class="region" data-group="2" d="M295,228 C328,242 360,268 372,298 C378,322 370,342 352,344 C332,346 310,320 298,290 C288,265 290,238 295,228 Z" ${S}/>
-<path class="region" data-group="2" d="M133,125 C112,150 100,192 100,250 C100,322 120,375 150,398 C165,407 182,410 200,410 C218,410 235,407 250,398 C280,375 300,322 300,250 C300,192 288,150 267,125 C252,102 228,90 200,90 C172,90 148,102 133,125 Z" ${S}/>
-<circle class="region" data-group="2" cx="200" cy="128" r="75" ${S}/>
-<ellipse class="region" data-group="6" cx="200" cy="118" rx="55" ry="50" ${S2}/>
-<path class="region" data-group="3" d="M162,232 C155,268 155,322 162,362 C170,392 185,408 200,409 C215,408 230,392 238,362 C245,322 245,268 238,232 C230,208 220,196 200,196 C180,196 170,208 162,232 Z" ${S2}/>
-<path class="region" data-group="4" d="M184,148 C190,162 196,175 200,182 C204,175 210,162 216,148 C211,140 206,136 200,136 C194,136 189,140 184,148 Z" ${S2}/>
-<path class="region" data-group="5" d="M155,398 C142,408 125,415 114,420 L132,420 C146,411 156,403 163,396 C170,403 176,411 182,420 L200,420 C192,408 175,396 172,382 Z" ${S2}/>
-<path class="region" data-group="5" d="M245,398 C258,408 275,415 286,420 L268,420 C254,411 244,403 237,396 C230,403 224,411 218,420 L200,420 C208,408 225,396 228,382 Z" ${S2}/>
-<circle class="region" data-group="7" cx="180" cy="116" r="18" ${S2}/>
-<circle class="region" data-group="7" cx="220" cy="116" r="18" ${S2}/>
+// 8 企鵝
+{id:8,name:'企鵝',emoji:'🐧',
+palette:[
+  {n:1,c:'#87CEEB',label:'天藍'},{n:2,c:'#1A1A2E',label:'黑色'},
+  {n:3,c:'#F5F5F5',label:'白色'},{n:4,c:'#FF8C00',label:'橙嘴'},
+  {n:5,c:'#FF7043',label:'橘腳'},{n:6,c:'#FFFDE7',label:'奶白'},
+  {n:7,c:'#E3F2FD',label:'淡白'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<path class="region" data-group="2" id="r2_wl" d="M105,228 C72,242 40,268 28,298 C22,322 30,342 48,344 C68,346 90,320 102,290 C112,265 110,238 105,228 Z" ${S}/>
+<path class="region" data-group="2" id="r2_wr" d="M295,228 C328,242 360,268 372,298 C378,322 370,342 352,344 C332,346 310,320 298,290 C288,265 290,238 295,228 Z" ${S}/>
+<path class="region" data-group="2" id="r2_body" d="M133,125 C112,150 100,192 100,250 C100,322 120,375 150,398 C165,407 182,410 200,410 C218,410 235,407 250,398 C280,375 300,322 300,250 C300,192 288,150 267,125 C252,102 228,90 200,90 C172,90 148,102 133,125 Z" ${S}/>
+<circle class="region" data-group="2" id="r2_hd" cx="200" cy="128" r="75" ${S}/>
+<ellipse class="region" data-group="6" id="r6_face" cx="200" cy="118" rx="55" ry="50" ${S2}/>
+<path class="region" data-group="3" id="r3_belly" d="M162,232 C155,268 155,322 162,362 C170,392 185,408 200,409 C215,408 230,392 238,362 C245,322 245,268 238,232 C230,208 220,196 200,196 C180,196 170,208 162,232 Z" ${S2}/>
+<path class="region" data-group="4" id="r4_beak" d="M184,148 C190,162 196,175 200,182 C204,175 210,162 216,148 C211,140 206,136 200,136 C194,136 189,140 184,148 Z" ${S2}/>
+<path class="region" data-group="5" id="r5_fl" d="M155,398 C142,408 125,415 114,420 L132,420 C146,411 156,403 163,396 C170,403 176,411 182,420 L200,420 C192,408 175,396 172,382 Z" ${S2}/>
+<path class="region" data-group="5" id="r5_fr" d="M245,398 C258,408 275,415 286,420 L268,420 C254,411 244,403 237,396 C230,403 224,411 218,420 L200,420 C208,408 225,396 228,382 Z" ${S2}/>
+<circle class="region" data-group="7" id="r7_eyl" cx="180" cy="116" r="18" ${S2}/>
+<circle class="region" data-group="7" id="r7_eyr" cx="220" cy="116" r="18" ${S2}/>
 <circle cx="182" cy="118" r="10" fill="#2c3e50" pointer-events="none"/>
 <circle cx="222" cy="118" r="10" fill="#2c3e50" pointer-events="none"/>
 <circle cx="179" cy="114" r="3.5" fill="white" pointer-events="none"/>
@@ -363,22 +431,28 @@ ${L(130,410,5,10)}${L(270,410,5,10)}${L(200,118,6,11)}
 ${L(180,116,7,10)}${L(220,116,7,10)}
 `)},
 
-// 9. 獅子
-{id:9,name:'獅子',emoji:'🦁',hints:['#FFF9C4','#B5651D','#FFD700','#FFC107','#FFB6C1','#FFF8DC','#5D4037','#4CAF50'],
-svg:svg(`
-<rect class="region" data-group="1" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="4" d="M112,242 C102,278 100,330 105,378 C108,398 118,408 135,408 L265,408 C282,408 292,398 295,378 C300,330 298,278 288,242 C272,220 242,212 200,212 C158,212 128,220 112,242 Z" ${S}/>
-<path class="region" data-group="4" d="M278,358 C340,330 388,302 396,258 C402,220 380,196 354,208 C330,220 320,248 308,275 C295,298 280,322 278,345 Z" ${S}/>
-<circle class="region" data-group="7" cx="358" cy="208" r="26" ${S2}/>
-<circle class="region" data-group="2" cx="200" cy="163" r="130" ${S}/>
-<circle class="region" data-group="3" cx="122" cy="68" r="34" ${S2}/>
-<circle class="region" data-group="3" cx="278" cy="68" r="34" ${S2}/>
-<circle class="region" data-group="5" cx="122" cy="68" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
-<circle class="region" data-group="5" cx="278" cy="68" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
-<circle class="region" data-group="3" cx="200" cy="158" r="90" ${S}/>
-<ellipse class="region" data-group="6" cx="200" cy="178" rx="50" ry="36" ${S2}/>
-<circle class="region" data-group="8" cx="172" cy="145" r="20" ${S2}/>
-<circle class="region" data-group="8" cx="228" cy="145" r="20" ${S2}/>
+// 9 獅子
+{id:9,name:'獅子',emoji:'🦁',
+palette:[
+  {n:1,c:'#FFF9C4',label:'米黃'},{n:2,c:'#B5651D',label:'深棕'},
+  {n:3,c:'#FFD700',label:'金黃'},{n:4,c:'#FFC107',label:'琥珀'},
+  {n:5,c:'#FFB6C1',label:'粉紅'},{n:6,c:'#FFF8DC',label:'奶白'},
+  {n:7,c:'#5D4037',label:'深褐'},{n:8,c:'#4CAF50',label:'綠色'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<path class="region" data-group="4" id="r4_body" d="M112,242 C102,278 100,330 105,378 C108,398 118,408 135,408 L265,408 C282,408 292,398 295,378 C300,330 298,278 288,242 C272,220 242,212 200,212 C158,212 128,220 112,242 Z" ${S}/>
+<path class="region" data-group="4" id="r4_tail" d="M278,358 C340,330 388,302 396,258 C402,220 380,196 354,208 C330,220 320,248 308,275 C295,298 280,322 278,345 Z" ${S}/>
+<circle class="region" data-group="7" id="r7_tuft" cx="358" cy="208" r="26" ${S2}/>
+<circle class="region" data-group="2" id="r2_mane" cx="200" cy="163" r="130" ${S}/>
+<circle class="region" data-group="3" id="r3_earl" cx="122" cy="68" r="34" ${S2}/>
+<circle class="region" data-group="3" id="r3_earr" cx="278" cy="68" r="34" ${S2}/>
+<circle class="region" data-group="5" id="r5_iel" cx="122" cy="68" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="5" id="r5_ier" cx="278" cy="68" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="3" id="r3_face" cx="200" cy="158" r="90" ${S}/>
+<ellipse class="region" data-group="6" id="r6_muz" cx="200" cy="178" rx="50" ry="36" ${S2}/>
+<circle class="region" data-group="8" id="r8_eyl" cx="172" cy="145" r="20" ${S2}/>
+<circle class="region" data-group="8" id="r8_eyr" cx="228" cy="145" r="20" ${S2}/>
 <ellipse cx="172" cy="148" rx="10" ry="13" fill="#2c3e50" pointer-events="none"/>
 <ellipse cx="228" cy="148" rx="10" ry="13" fill="#2c3e50" pointer-events="none"/>
 <circle cx="168" cy="142" r="4" fill="white" pointer-events="none"/>
@@ -398,24 +472,30 @@ ${L(122,68,5,11)}${L(278,68,5,11)}${L(200,178,6,12)}
 ${L(358,208,7,11)}${L(172,145,8,11)}${L(228,145,8,11)}
 `)},
 
-// 10. 烏龜
-{id:10,name:'烏龜',emoji:'🐢',hints:['#87CEEB','#2E8B57','#90EE90','#3CB371','#228B22','#228B22','#1a6b3a'],
-svg:svg(`
-<rect class="region" data-group="1" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="7" d="M186,350 C182,368 180,390 183,405 L200,410 L217,405 C220,390 218,368 214,350 C208,342 192,342 186,350 Z" ${S2}/>
-<path class="region" data-group="6" d="M90,272 C62,290 28,302 8,322 C4,340 12,355 30,352 C55,346 80,320 98,298 Z" ${S}/>
-<path class="region" data-group="6" d="M310,272 C338,290 372,302 392,322 C396,340 388,355 370,352 C345,346 320,320 302,298 Z" ${S}/>
-<path class="region" data-group="5" d="M93,158 C65,142 28,136 8,152 C2,166 8,182 24,185 C48,190 78,178 100,168 Z" ${S}/>
-<path class="region" data-group="5" d="M307,158 C335,142 372,136 392,152 C398,166 392,182 376,185 C352,190 322,178 300,168 Z" ${S}/>
-<ellipse class="region" data-group="2" cx="200" cy="218" rx="118" ry="142" ${S}/>
-<circle class="region" data-group="3" cx="200" cy="178" r="30" ${S2}/>
-<circle class="region" data-group="3" cx="162" cy="215" r="24" ${S2}/>
-<circle class="region" data-group="3" cx="238" cy="215" r="24" ${S2}/>
-<circle class="region" data-group="3" cx="200" cy="252" r="24" ${S2}/>
-<circle class="region" data-group="3" cx="162" cy="285" r="20" ${S2}/>
-<circle class="region" data-group="3" cx="238" cy="285" r="20" ${S2}/>
-<circle class="region" data-group="3" cx="200" cy="315" r="20" ${S2}/>
-<path class="region" data-group="4" d="M175,90 C178,70 186,50 200,44 C214,50 222,70 225,90 C222,106 214,115 200,118 C186,115 178,106 175,90 Z" ${S}/>
+// 10 烏龜
+{id:10,name:'烏龜',emoji:'🐢',
+palette:[
+  {n:1,c:'#87CEEB',label:'水藍'},{n:2,c:'#2E8B57',label:'深綠'},
+  {n:3,c:'#90EE90',label:'淺綠'},{n:4,c:'#3CB371',label:'中綠'},
+  {n:5,c:'#228B22',label:'墨綠'},{n:6,c:'#1a6b3a',label:'暗綠'},
+  {n:7,c:'#A8D5A2',label:'嫩綠'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<path class="region" data-group="7" id="r7_tail" d="M186,350 C182,368 180,390 183,405 L200,410 L217,405 C220,390 218,368 214,350 C208,342 192,342 186,350 Z" ${S2}/>
+<path class="region" data-group="6" id="r6_bll" d="M90,272 C62,290 28,302 8,322 C4,340 12,355 30,352 C55,346 80,320 98,298 Z" ${S}/>
+<path class="region" data-group="6" id="r6_blr" d="M310,272 C338,290 372,302 392,322 C396,340 388,355 370,352 C345,346 320,320 302,298 Z" ${S}/>
+<path class="region" data-group="5" id="r5_fl" d="M93,158 C65,142 28,136 8,152 C2,166 8,182 24,185 C48,190 78,178 100,168 Z" ${S}/>
+<path class="region" data-group="5" id="r5_fr" d="M307,158 C335,142 372,136 392,152 C398,166 392,182 376,185 C352,190 322,178 300,168 Z" ${S}/>
+<ellipse class="region" data-group="2" id="r2_shell" cx="200" cy="218" rx="118" ry="142" ${S}/>
+<circle class="region" data-group="3" id="r3_p1" cx="200" cy="178" r="30" ${S2}/>
+<circle class="region" data-group="3" id="r3_p2" cx="162" cy="215" r="24" ${S2}/>
+<circle class="region" data-group="3" id="r3_p3" cx="238" cy="215" r="24" ${S2}/>
+<circle class="region" data-group="3" id="r3_p4" cx="200" cy="252" r="24" ${S2}/>
+<circle class="region" data-group="3" id="r3_p5" cx="162" cy="285" r="20" ${S2}/>
+<circle class="region" data-group="3" id="r3_p6" cx="238" cy="285" r="20" ${S2}/>
+<circle class="region" data-group="3" id="r3_p7" cx="200" cy="315" r="20" ${S2}/>
+<path class="region" data-group="4" id="r4_hd" d="M175,90 C178,70 186,50 200,44 C214,50 222,70 225,90 C222,106 214,115 200,118 C186,115 178,106 175,90 Z" ${S}/>
 <circle cx="190" cy="78" r="7" fill="white" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <circle cx="210" cy="78" r="7" fill="white" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <circle cx="191" cy="79" r="4" fill="#2c3e50" pointer-events="none"/>
@@ -426,12 +506,17 @@ ${L(200,75,4,11)}${L(40,162,5,12)}${L(360,162,5,12)}
 ${L(38,312,6,12)}${L(362,312,6,12)}${L(200,395,7,11)}
 `)}
 
-];// ── State ──
-let cur=0, selCol=PAL[0], colored={};
-let done=new Set(JSON.parse(localStorage.getItem('din_done')||'[]'));
+];
+
+// ── State ──
+let cur=0, selNum=null;
+let done=new Set(JSON.parse(localStorage.getItem('din2_done')||'[]'));
 
 // ── Screens ──
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 function showLevelSelect(){renderGrid();showScreen('level-select')}
 
 // ── Level grid ──
@@ -442,57 +527,95 @@ function renderGrid(){
       <div class="lv-num">第 ${i+1} 關</div>
       <div class="lv-name">${lv.name}</div>
       ${done.has(i)?'<div class="lv-star">⭐</div>':''}
-    </div>`).join('')
+    </div>`).join('');
 }
 
-// ── Palette ──
-function renderPal(){
-  document.getElementById('cGrid').innerHTML=PAL.map((c,i)=>`
-    <button class="c-btn ${c===selCol?'sel':''}" style="background:${c}" title="${PNAME[i]}"
-      onclick="pickCol('${c}',this)"></button>`).join('')
+// ── Color swatches ──
+function renderSwatches(){
+  const lv=LEVELS[cur];
+  document.getElementById('swatchList').innerHTML=lv.palette.map(p=>`
+    <div class="swatch ${selNum===p.n?'sel':''}" onclick="pickNum(${p.n},this)" title="${p.label}">
+      <div class="swatch-num">${p.n}</div>
+      <div class="swatch-color" style="background:${p.c}"></div>
+    </div>`).join('');
 }
-function pickCol(c,btn){
-  selCol=c;
-  document.querySelectorAll('.c-btn').forEach(b=>b.classList.remove('sel'));
-  btn.classList.add('sel');
+function pickNum(n,el){
+  selNum=n;
+  document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('sel'));
+  el.classList.add('sel');
+  // update tip
+  const lv=LEVELS[cur];
+  const p=lv.palette.find(x=>x.n===n);
+  document.getElementById('tipBar').textContent=`已選 ${n} 號 (${p.label})，請點圖案中數字「${n}」的區塊`;
 }
 
 // ── Load level ──
 function startLevel(i){
-  cur=i; colored={};
-  document.getElementById('gTitle').textContent=`第 ${i+1} 關 · ${LEVELS[i].emoji} ${LEVELS[i].name}`;
-  document.getElementById('svgWrap').innerHTML=LEVELS[i].svg;
+  cur=i; selNum=null;
+  const lv=LEVELS[i];
+  document.getElementById('gTitle').textContent=`第 ${i+1} 關 · ${lv.emoji} ${lv.name}`;
+  document.getElementById('svgWrap').innerHTML=lv.svg;
   document.getElementById('progFill').style.width='0%';
-  renderPal();
+  document.getElementById('tipBar').textContent='👈 先選左邊的顏色數字，再點圖案上相同數字的區塊';
+  renderSwatches();
+
+  // attach click to each region element individually
   document.querySelectorAll('#svgWrap .region').forEach(el=>{
-    el.addEventListener('click',()=>{const g=el.dataset.group;if(g)applyCol(+g)});
+    el.addEventListener('click', ()=>onRegionClick(el));
   });
   showScreen('game-screen');
 }
 
-function applyCol(g){
-  colored[g]=selCol;
-  document.querySelectorAll(`#svgWrap .region[data-group="${g}"]`).forEach(el=>el.setAttribute('fill',selCol));
-  updateProg();
-  checkWin();
+function onRegionClick(el){
+  const regionNum=parseInt(el.dataset.group);
+
+  // already filled
+  if(el.dataset.filled==='1'){
+    toast('這個區塊已經著色了 ✓');
+    return;
+  }
+
+  if(selNum===null){
+    toast('請先點左邊的顏色數字！');
+    return;
+  }
+
+  if(selNum===regionNum){
+    // ✓ Correct
+    const lv=LEVELS[cur];
+    const p=lv.palette.find(x=>x.n===regionNum);
+    el.setAttribute('fill', p.c);
+    el.dataset.filled='1';
+    el.classList.add('correct');
+    setTimeout(()=>el.classList.remove('correct'),400);
+    updateProg();
+    checkWin();
+  } else {
+    // ✗ Wrong
+    toast(`這裡是 ${regionNum} 號，請選 ${regionNum} 號的顏色！`);
+    el.classList.add('shake');
+    setTimeout(()=>el.classList.remove('shake'),450);
+  }
 }
 
 function updateProg(){
-  const all=new Set([...document.querySelectorAll('#svgWrap .region[data-group]')].map(e=>e.dataset.group));
-  document.getElementById('progFill').style.width=(all.size?Object.keys(colored).length/all.size*100:0)+'%';
+  const all=document.querySelectorAll('#svgWrap .region[data-group]');
+  const filled=[...all].filter(e=>e.dataset.filled==='1').length;
+  document.getElementById('progFill').style.width=(filled/all.length*100)+'%';
 }
 
 function checkWin(){
-  const all=new Set([...document.querySelectorAll('#svgWrap .region[data-group]')].map(e=>e.dataset.group));
-  if(Object.keys(colored).length>=all.size) setTimeout(showComplete,600);
+  const all=document.querySelectorAll('#svgWrap .region[data-group]');
+  const filled=[...all].filter(e=>e.dataset.filled==='1').length;
+  if(filled>=all.length) setTimeout(showComplete,700);
 }
 
-function resetLevel(){startLevel(cur)}
+function resetLevel(){selNum=null;startLevel(cur)}
 
 // ── Complete ──
 function showComplete(){
   done.add(cur);
-  localStorage.setItem('din_done',JSON.stringify([...done]));
+  localStorage.setItem('din2_done',JSON.stringify([...done]));
   const lv=LEVELS[cur];
   document.getElementById('cTitle').textContent=`完成了！${lv.emoji}`;
   document.getElementById('cSub').textContent=`第 ${cur+1} 關「${lv.name}」著色完成，真棒！`;
@@ -503,14 +626,16 @@ function showComplete(){
 function nextLevel(){startLevel(cur+1)}
 
 // ── Toast ──
+let toastTimer;
 function toast(msg){
+  clearTimeout(toastTimer);
   const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2000);
+  t.textContent=msg; t.classList.add('show');
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
 }
 
 // ── Init ──
-renderGrid();renderPal();
+renderGrid();
 </script>
 </body>
 </html>
