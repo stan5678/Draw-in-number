@@ -97,7 +97,7 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:linear
 
 <!-- START -->
 <div id="start-screen" class="screen active">
-  <div class="emoji-row">🦋🐱🐟🐸🐰🐝🦉🐧🦁🐢</div>
+  <div class="emoji-row">🦋🐱🐟🐸🐰🐝🦉🐧🦁🐢🐻</div>
   <h1>動物填色遊戲</h1>
   <p>選左邊的顏色，再點圖案上相同數字的區塊！</p>
   <button class="btn btn-w" onclick="showLevelSelect()">▶ 開始遊戲</button>
@@ -511,6 +511,54 @@ ${L(200,178,3,11)}${L(162,215,3,10)}${L(238,215,3,10)}${L(200,252,3,10)}
 ${L(162,285,3,10)}${L(238,285,3,10)}${L(200,315,3,10)}
 ${L(200,75,4,11)}${L(40,162,5,12)}${L(360,162,5,12)}
 ${L(38,312,6,12)}${L(362,312,6,12)}${L(200,385,7,11)}
+`)},
+
+// 11 小熊
+{id:11,name:'小熊',emoji:'🐻',
+palette:[
+  {n:1,c:'#87CEEB',label:'天藍'},
+  {n:2,c:'#E8A04A',label:'琥珀'},
+  {n:3,c:'#FF69B4',label:'粉紅'},
+  {n:4,c:'#FFF176',label:'黃色'},
+  {n:5,c:'#FFAB91',label:'蜜桃'},
+  {n:6,c:'#6D4C41',label:'深棕'},
+  {n:7,c:'#212121',label:'深黑'}
+],
+svg:mksvg(`
+<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<circle class="region" data-group="2" id="r2_loe" cx="125" cy="98" r="33" ${S}/>
+<circle class="region" data-group="2" id="r2_roe" cx="275" cy="98" r="33" ${S}/>
+<ellipse class="region" data-group="2" id="r2_body" cx="200" cy="300" rx="125" ry="100" ${S}/>
+<circle class="region" data-group="2" id="r2_head" cx="200" cy="175" r="90" ${S}/>
+<circle class="region" data-group="3" id="r3_lie" cx="125" cy="96" r="19" ${S2}/>
+<circle class="region" data-group="3" id="r3_rie" cx="275" cy="96" r="19" ${S2}/>
+<ellipse class="region" data-group="4" id="r4_belly" cx="200" cy="315" rx="68" ry="58" ${S2}/>
+<ellipse class="region" data-group="6" id="r6_lpaw" cx="92" cy="328" rx="32" ry="22" ${S}/>
+<ellipse class="region" data-group="6" id="r6_rpaw" cx="308" cy="328" rx="32" ry="22" ${S}/>
+<ellipse class="region" data-group="6" id="r6_lft" cx="152" cy="382" rx="40" ry="18" ${S}/>
+<ellipse class="region" data-group="6" id="r6_rft" cx="248" cy="382" rx="40" ry="18" ${S}/>
+<ellipse class="region" data-group="5" id="r5_mzz" cx="200" cy="202" rx="44" ry="32" ${S2}/>
+<ellipse class="region" data-group="7" id="r7_nose" cx="200" cy="194" rx="16" ry="10" ${S2}/>
+<circle cx="172" cy="158" r="15" fill="white" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
+<circle cx="228" cy="158" r="15" fill="white" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
+<circle cx="172" cy="160" r="9" fill="#2C1810" pointer-events="none"/>
+<circle cx="228" cy="160" r="9" fill="#2C1810" pointer-events="none"/>
+<circle cx="168" cy="155" r="3.5" fill="white" pointer-events="none"/>
+<circle cx="224" cy="155" r="3.5" fill="white" pointer-events="none"/>
+<path d="M190,216 Q200,226 210,216" fill="none" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" pointer-events="none"/>
+<circle cx="80" cy="318" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+<circle cx="92" cy="315" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+<circle cx="104" cy="318" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+<circle cx="296" cy="318" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+<circle cx="308" cy="315" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+<circle cx="320" cy="318" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+${L(22,22,1,13)}
+${L(200,118,2)}${L(315,300,2,12)}${L(105,76,2,10)}${L(295,76,2,10)}
+${L(125,98,3,10)}${L(275,98,3,10)}
+${L(200,318,4,12)}
+${L(200,208,5,12)}
+${L(92,328,6,11)}${L(308,328,6,11)}${L(152,382,6,10)}${L(248,382,6,10)}
+${L(200,194,7,10)}
 `)}
 
 ];
