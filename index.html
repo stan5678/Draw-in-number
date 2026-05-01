@@ -37,14 +37,14 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:linear
 .g-body{display:flex;gap:14px;align-items:flex-start}
 
 /* Color Legend Panel */
-.legend-panel{width:140px;flex-shrink:0;background:rgba(255,255,255,.18);border-radius:16px;padding:10px 8px;border:1.5px solid rgba(255,255,255,.3)}
+.legend-panel{width:150px;flex-shrink:0;background:rgba(255,255,255,.18);border-radius:16px;padding:10px 8px;border:1.5px solid rgba(255,255,255,.3)}
 .lp-title{color:#fff;text-align:center;font-size:.82em;margin-bottom:8px;font-weight:700;opacity:.9}
-.swatch-list{display:flex;flex-direction:column;gap:6px}
-.swatch{display:flex;align-items:center;border-radius:10px;overflow:hidden;cursor:pointer;border:3px solid rgba(255,255,255,.4);transition:all .2s;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.swatch-list{display:flex;flex-direction:column;gap:7px}
+.swatch{display:flex;align-items:center;border-radius:10px;overflow:hidden;cursor:pointer;border:3px solid rgba(255,255,255,.5);transition:all .2s;box-shadow:0 2px 6px rgba(0,0,0,.25);height:38px}
 .swatch:hover{border-color:#fff;transform:scale(1.04)}
-.swatch.sel{border-color:#fff;border-width:4px;transform:scale(1.06);box-shadow:0 0 0 3px rgba(255,255,255,.5),0 4px 12px rgba(0,0,0,.3)}
-.swatch-num{background:rgba(0,0,0,.35);color:#fff;font-weight:900;font-size:1em;width:30px;min-width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.swatch-color{flex:1;height:30px}
+.swatch.sel{border-color:#fff;border-width:4px;transform:scale(1.06);box-shadow:0 0 0 3px rgba(255,255,255,.6),0 4px 12px rgba(0,0,0,.3)}
+.swatch-num{background:rgba(0,0,0,.45);color:#fff;font-weight:900;font-size:1.05em;width:34px;min-width:34px;height:100%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.swatch-color{flex:1;height:100%;min-width:0}
 
 /* SVG */
 .svg-wrap{flex:1;background:#fff;border-radius:18px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);min-width:0}
@@ -85,10 +85,9 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:linear
   .level-grid{grid-template-columns:repeat(3,1fr)}
   .g-body{flex-direction:column}
   .legend-panel{width:100%}
-  .swatch-list{flex-direction:row;flex-wrap:wrap;gap:6px}
-  .swatch{width:calc(25% - 5px);flex-direction:column;border-radius:10px}
-  .swatch-num{width:100%;height:22px;font-size:.85em}
-  .swatch-color{width:100%;height:28px}
+  .swatch-list{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  .swatch{width:100%;height:44px;border-radius:10px}
+  .swatch-num{width:32px;min-width:32px;font-size:.95em}
   #start-screen h1{font-size:2em}
   .g-title{font-size:1.1em}
 }
