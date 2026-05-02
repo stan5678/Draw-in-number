@@ -160,159 +160,245 @@ const LEVELS=[
 // 1 蝴蝶
 {id:1,name:'蝴蝶',emoji:'🦋',
 palette:[
-  {n:1,c:'#87CEEB',label:'天藍'},{n:2,c:'#FF8C00',label:'橙色'},
-  {n:3,c:'#DAA520',label:'金色'},{n:4,c:'#FF69B4',label:'粉紅'},
-  {n:5,c:'#FF6347',label:'紅橙'},{n:6,c:'#8B4513',label:'棕色'},
-  {n:7,c:'#D2691E',label:'淺棕'},{n:8,c:'#333333',label:'深色'}
+  {n:1,c:'#5DADE2',label:'天藍'},{n:2,c:'#27AE60',label:'草綠'},
+  {n:3,c:'#F1C40F',label:'陽黃'},{n:4,c:'#E67E22',label:'橙色'},
+  {n:5,c:'#E74C3C',label:'緋紅'},{n:6,c:'#FFD700',label:'金黃'},
+  {n:7,c:'#F39C12',label:'琥珀'},{n:8,c:'#9B59B6',label:'紫色'},
+  {n:9,c:'#6C3483',label:'深紫'},{n:10,c:'#48C9B0',label:'青碧'},
+  {n:11,c:'#16A085',label:'深青'},{n:12,c:'#1565C0',label:'深藍'},
+  {n:13,c:'#B71C1C',label:'深紅'},{n:14,c:'#795548',label:'棕色'},
+  {n:15,c:'#263238',label:'墨綠'},{n:16,c:'#37474F',label:'深灰'},
+  {n:17,c:'#E91E63',label:'桃紅'},{n:18,c:'#FF5722',label:'火橙'},
+  {n:19,c:'#7CB342',label:'嫩綠'},{n:20,c:'#EC407A',label:'玫紅'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="2" id="r2_wul" d="M200,225 C168,195 100,160 35,165 C8,173 6,205 22,233 C44,268 100,272 165,253 Z" ${S}/>
-<path class="region" data-group="2" id="r2_wur" d="M200,225 C232,195 300,160 365,165 C392,173 394,205 378,233 C356,268 300,272 235,253 Z" ${S}/>
-<path class="region" data-group="3" id="r3_wll" d="M196,248 C165,262 112,282 68,308 C22,338 15,378 38,393 C60,405 105,400 148,376 C178,358 196,322 196,282 Z" ${S}/>
-<path class="region" data-group="3" id="r3_wlr" d="M204,248 C235,262 288,282 332,308 C378,338 385,378 362,393 C340,405 295,400 252,376 C222,358 204,322 204,282 Z" ${S}/>
-<ellipse class="region" data-group="4" id="r4_oul" cx="118" cy="208" rx="48" ry="28" ${S2}/>
-<ellipse class="region" data-group="4" id="r4_our" cx="282" cy="208" rx="48" ry="28" ${S2}/>
-<ellipse class="region" data-group="5" id="r5_sll" cx="112" cy="322" rx="32" ry="22" ${S2}/>
-<ellipse class="region" data-group="5" id="r5_slr" cx="288" cy="322" rx="32" ry="22" ${S2}/>
-<ellipse class="region" data-group="6" id="r6_abd" cx="200" cy="272" rx="14" ry="62" ${S}/>
-<ellipse class="region" data-group="7" id="r7_tho" cx="200" cy="218" rx="17" ry="24" ${S}/>
-<circle class="region" data-group="7" id="r7_hd" cx="200" cy="183" r="22" ${S}/>
+<rect class="region" data-group="1" id="r1_sky" x="0" y="0" width="400" height="225" fill="white" stroke="none"/>
+<rect class="region" data-group="2" id="r2_gnd" x="0" y="225" width="400" height="175" fill="white" stroke="none"/>
+<circle class="region" data-group="3" id="r3_sun" cx="345" cy="65" r="28" fill="white" stroke="#2c3e50" stroke-width="2"/>
+<circle class="region" data-group="19" id="r19_fl" cx="55" cy="268" r="25" fill="white" stroke="#2c3e50" stroke-width="2"/>
+<circle class="region" data-group="20" id="r20_fc" cx="55" cy="268" r="12" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<path class="region" data-group="8" id="r8_lwl" d="M196,248 C165,262 112,282 68,308 C22,338 15,378 38,393 C60,405 105,400 148,376 C178,358 196,322 196,282 Z" ${S}/>
+<path class="region" data-group="9" id="r9_lwr" d="M204,248 C235,262 288,282 332,308 C378,338 385,378 362,393 C340,405 295,400 252,376 C222,358 204,322 204,282 Z" ${S}/>
+<path class="region" data-group="4" id="r4_uwl" d="M200,225 C168,195 100,160 35,165 C8,173 6,205 22,233 C44,268 100,272 165,253 Z" ${S}/>
+<path class="region" data-group="5" id="r5_uwr" d="M200,225 C232,195 300,160 365,165 C392,173 394,205 378,233 C356,268 300,272 235,253 Z" ${S}/>
+<circle class="region" data-group="12" id="r12_sl" cx="42" cy="200" r="15" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="13" id="r13_sr" cx="358" cy="200" r="15" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<ellipse class="region" data-group="6" id="r6_uwli" cx="118" cy="208" rx="48" ry="28" ${S2}/>
+<ellipse class="region" data-group="7" id="r7_uwri" cx="282" cy="208" rx="48" ry="28" ${S2}/>
+<ellipse class="region" data-group="10" id="r10_lwli" cx="112" cy="322" rx="32" ry="22" ${S2}/>
+<ellipse class="region" data-group="11" id="r11_lwri" cx="288" cy="322" rx="32" ry="22" ${S2}/>
+<ellipse class="region" data-group="14" id="r14_abd" cx="200" cy="272" rx="14" ry="62" ${S}/>
+<ellipse class="region" data-group="15" id="r15_tho" cx="200" cy="218" rx="17" ry="24" ${S}/>
+<circle class="region" data-group="16" id="r16_hd" cx="200" cy="183" r="22" ${S}/>
 <line x1="192" y1="163" x2="172" y2="143" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>
 <line x1="208" y1="163" x2="228" y2="143" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>
-<circle class="region" data-group="8" id="r8_al" cx="170" cy="140" r="9" ${S2}/>
-<circle class="region" data-group="8" id="r8_ar" cx="230" cy="140" r="9" ${S2}/>
+<circle class="region" data-group="17" id="r17_anl" cx="170" cy="140" r="9" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="18" id="r18_anr" cx="230" cy="140" r="9" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
 <circle cx="194" cy="182" r="5" fill="#2c3e50" pointer-events="none"/>
 <circle cx="206" cy="182" r="5" fill="#2c3e50" pointer-events="none"/>
-<circle cx="195" cy="181" r="2" fill="white" pointer-events="none"/>
-<circle cx="207" cy="181" r="2" fill="white" pointer-events="none"/>
-<line x1="188" y1="257" x2="212" y2="257" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="187" y1="268" x2="213" y2="268" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="187" y1="279" x2="213" y2="279" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<line x1="188" y1="290" x2="212" y2="290" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-${L(22,22,1,13)}${L(50,175,2)}${L(350,175,2)}${L(80,335,3)}${L(320,335,3)}
-${L(118,208,4,12)}${L(282,208,4,12)}${L(112,322,5,12)}${L(288,322,5,12)}
-${L(200,272,6,12)}${L(200,175,7,10)}${L(200,218,7,11)}${L(170,140,8,10)}${L(230,140,8,10)}
+${L(22,22,1,12)}${L(200,375,2,12)}${L(345,65,3,11)}
+${L(50,185,4)}${L(350,185,5)}
+${L(118,208,6,12)}${L(282,208,7,12)}
+${L(80,335,8)}${L(320,335,9)}
+${L(112,322,10,12)}${L(288,322,11,12)}
+${L(42,200,12,10)}${L(358,200,13,10)}
+${L(200,272,14,11)}${L(200,218,15,10)}${L(200,183,16,10)}
+${L(170,140,17,9)}${L(230,140,18,9)}
+${L(55,250,19,10)}${L(55,268,20,9)}
 `)},
 
 // 2 貓
 {id:2,name:'貓咪',emoji:'🐱',
 palette:[
-  {n:1,c:'#A5D6A7',label:'草綠'},{n:2,c:'#FF8C00',label:'橘色'},
-  {n:3,c:'#FFD700',label:'黃色'},{n:4,c:'#FF6B9D',label:'深粉'},
-  {n:5,c:'#FF8C42',label:'橘桃'},{n:6,c:'#9E9E9E',label:'灰色'},
-  {n:7,c:'#4CAF50',label:'綠色'}
+  {n:1,c:'#7986CB',label:'靛藍'},{n:2,c:'#8D6E63',label:'棕地'},
+  {n:3,c:'#FF8C42',label:'橘體'},{n:4,c:'#FFAB00',label:'金頭'},
+  {n:5,c:'#FF6B35',label:'橘耳'},{n:6,c:'#9C27B0',label:'紫耳'},
+  {n:7,c:'#FF1493',label:'粉耳'},{n:8,c:'#E040FB',label:'蘭耳'},
+  {n:9,c:'#FFD600',label:'黃鼻'},{n:10,c:'#E91E63',label:'紅鼻'},
+  {n:11,c:'#4CAF50',label:'綠肚'},{n:12,c:'#2196F3',label:'藍掌'},
+  {n:13,c:'#03A9F4',label:'水掌'},{n:14,c:'#FF5722',label:'火尾'},
+  {n:15,c:'#8BC34A',label:'綠眼'},{n:16,c:'#1B5E20',label:'深眼'},
+  {n:17,c:'#F44336',label:'紅領'},{n:18,c:'#FFC107',label:'金鈴'},
+  {n:19,c:'#FF80AB',label:'粉頰'},{n:20,c:'#7E57C2',label:'紫頰'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="2" id="r2_tail" d="M275,355 C340,325 390,295 396,248 C400,210 378,188 352,200 C328,212 320,242 308,268 C295,292 280,318 278,342 Z" ${S}/>
-<circle class="region" data-group="6" id="r6_tip" cx="356" cy="200" r="22" ${S2}/>
-<path class="region" data-group="2" id="r2_body" d="M118,235 C108,270 106,322 110,370 C114,390 124,398 138,398 L262,398 C276,398 286,390 290,370 C294,322 292,270 282,235 C268,216 240,210 200,210 C160,210 132,216 118,235 Z" ${S}/>
-<polygon class="region" data-group="2" id="r2_el" points="133,108,108,30,180,78" ${S}/>
-<polygon class="region" data-group="2" id="r2_er" points="267,108,292,30,220,78" ${S}/>
-<circle class="region" data-group="2" id="r2_hd" cx="200" cy="160" r="80" ${S}/>
-<path class="region" data-group="3" id="r3_belly" d="M158,285 C158,258 176,245 200,245 C224,245 242,258 242,285 C242,348 226,396 200,396 C174,396 158,348 158,285 Z" ${S2}/>
-<polygon class="region" data-group="4" id="r4_iel" points="137,103,116,44,174,76" ${S2}/>
-<polygon class="region" data-group="4" id="r4_ier" points="263,103,284,44,226,76" ${S2}/>
-<ellipse class="region" data-group="5" id="r5_muz" cx="200" cy="178" rx="44" ry="30" ${S2}/>
-<circle class="region" data-group="7" id="r7_eyl" cx="172" cy="148" r="18" ${S2}/>
-<circle class="region" data-group="7" id="r7_eyr" cx="228" cy="148" r="18" ${S2}/>
+<rect class="region" data-group="1" id="r1_wl" x="0" y="0" width="400" height="290" fill="white" stroke="none"/>
+<rect class="region" data-group="2" id="r2_fl" x="0" y="290" width="400" height="110" fill="white" stroke="none"/>
+<ellipse class="region" data-group="14" id="r14_tail" cx="328" cy="318" rx="22" ry="72" transform="rotate(-18,328,318)" ${S}/>
+<path class="region" data-group="3" id="r3_body" d="M118,235 C108,270 106,322 110,370 C114,390 124,398 138,398 L262,398 C276,398 286,390 290,370 C294,322 292,270 282,235 C268,216 240,210 200,210 C160,210 132,216 118,235 Z" ${S}/>
+<path class="region" data-group="11" id="r11_belly" d="M158,285 C158,258 176,245 200,245 C224,245 242,258 242,285 C242,348 226,396 200,396 C174,396 158,348 158,285 Z" ${S2}/>
+<ellipse class="region" data-group="12" id="r12_lpaw" cx="130" cy="378" rx="40" ry="20" ${S}/>
+<ellipse class="region" data-group="13" id="r13_rpaw" cx="270" cy="378" rx="40" ry="20" ${S}/>
+<polygon class="region" data-group="5" id="r5_loe" points="133,108,108,30,180,78" ${S}/>
+<polygon class="region" data-group="6" id="r6_roe" points="267,108,292,30,220,78" ${S}/>
+<circle class="region" data-group="4" id="r4_hd" cx="200" cy="160" r="82" ${S}/>
+<polygon class="region" data-group="7" id="r7_lie" points="137,103,116,44,174,76" ${S2}/>
+<polygon class="region" data-group="8" id="r8_rie" points="263,103,284,44,226,76" ${S2}/>
+<ellipse class="region" data-group="17" id="r17_col" cx="200" cy="240" rx="62" ry="14" ${S2}/>
+<circle class="region" data-group="18" id="r18_bel" cx="200" cy="252" r="12" ${S2}/>
+<circle class="region" data-group="19" id="r19_lck" cx="158" cy="185" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="20" id="r20_rck" cx="242" cy="185" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<ellipse class="region" data-group="9" id="r9_muz" cx="200" cy="178" rx="44" ry="30" ${S2}/>
+<ellipse class="region" data-group="10" id="r10_nos" cx="200" cy="169" rx="12" ry="8" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="15" id="r15_eyl" cx="172" cy="148" r="18" ${S2}/>
+<circle class="region" data-group="16" id="r16_eyr" cx="228" cy="148" r="18" ${S2}/>
 <ellipse cx="172" cy="150" rx="9" ry="12" fill="#2c3e50" pointer-events="none"/>
 <ellipse cx="228" cy="150" rx="9" ry="12" fill="#2c3e50" pointer-events="none"/>
 <circle cx="169" cy="146" r="3" fill="white" pointer-events="none"/>
 <circle cx="225" cy="146" r="3" fill="white" pointer-events="none"/>
-<polygon points="196,182,204,182,200,188" fill="#FF8FAB" pointer-events="none"/>
-<path d="M196,188 Q200,194 204,188" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
+<path d="M196,176 Q200,181 204,176" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
+<path d="M196,186 Q200,192 204,186" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="158" y1="178" x2="118" y2="172" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="158" y1="184" x2="118" y2="184" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="242" y1="178" x2="282" y2="172" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="242" y1="184" x2="282" y2="184" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-${L(22,22,1,13)}${L(200,130,2)}${L(130,270,2)}${L(270,270,2)}${L(352,258,2,11)}
-${L(113,38,2,9)}${L(287,38,2,9)}${L(200,290,3)}
-${L(142,72,4,11)}${L(258,72,4,11)}${L(200,178,5,12)}
-${L(356,200,6,11)}${L(172,148,7,11)}${L(228,148,7,11)}
+${L(22,22,1,12)}${L(200,360,2,12)}
+${L(312,318,3,12)}${L(200,120,4)}
+${L(113,42,5,10)}${L(287,42,6,10)}
+${L(142,72,7,10)}${L(258,72,8,10)}
+${L(200,178,9,11)}${L(200,169,10,9)}
+${L(200,285,11)}${L(130,378,12,11)}${L(270,378,13,11)}
+${L(200,240,17,11)}${L(200,252,18,9)}
+${L(158,185,19,10)}${L(242,185,20,10)}
+${L(172,148,15,10)}${L(228,148,16,10)}
 `)},
 
 // 3 金魚
 {id:3,name:'金魚',emoji:'🐟',
 palette:[
-  {n:1,c:'#87CEEB',label:'水藍'},{n:2,c:'#FF6B35',label:'橘紅'},
-  {n:3,c:'#CC2200',label:'深紅'},{n:4,c:'#FFA500',label:'橙色'},
-  {n:5,c:'#FFEB3B',label:'亮黃'},{n:6,c:'#B2EBF2',label:'淡藍'},
-  {n:7,c:'#FF9A7A',label:'鮭魚'}
+  {n:1,c:'#42A5F5',label:'水面'},{n:2,c:'#1565C0',label:'水底'},
+  {n:3,c:'#2E7D32',label:'水草'},{n:4,c:'#FF6F00',label:'身體'},
+  {n:5,c:'#E65100',label:'頭部'},{n:6,c:'#FF8F00',label:'背鰭'},
+  {n:7,c:'#F9A825',label:'尾上'},{n:8,c:'#F57F17',label:'尾下'},
+  {n:9,c:'#FFCA28',label:'胸鰭'},{n:10,c:'#FFB300',label:'腹部'},
+  {n:11,c:'#BF360C',label:'鱗A'},{n:12,c:'#D32F2F',label:'鱗B'},
+  {n:13,c:'#FF4081',label:'嘴唇'},{n:14,c:'#78909C',label:'眼圈'},
+  {n:15,c:'#FF7043',label:'鰓蓋'},{n:16,c:'#9C27B0',label:'臀鰭'},
+  {n:17,c:'#6A1B9A',label:'背紋'},{n:18,c:'#311B92',label:'尾斑'},
+  {n:19,c:'#81D4FA',label:'氣泡'},{n:20,c:'#E91E63',label:'珊瑚'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="3" id="r3_tail" d="M308,178 C340,138 392,112 400,90 C388,140 382,168 398,200 C382,232 388,260 400,310 C392,288 340,262 308,222 Z" ${S}/>
-<path class="region" data-group="4" id="r4_dfin" d="M178,98 C188,70 210,48 232,44 C245,55 248,75 236,94 Z" ${S2}/>
-<path class="region" data-group="2" id="r2_body" d="M310,200 C310,148 278,108 220,94 C162,80 110,96 84,132 C58,165 58,236 84,270 C110,305 162,320 220,305 C278,290 310,252 310,200 Z" ${S}/>
-<path class="region" data-group="5" id="r5_belly" d="M92,238 C108,278 148,310 200,308 C248,308 286,278 302,238 C278,262 250,272 220,268 C186,264 158,250 130,230 Z" ${S2}/>
-<path class="region" data-group="7" id="r7_pfin" d="M218,190 C228,207 235,230 224,250 C210,260 195,252 190,240 C196,220 206,200 218,190 Z" ${S2}/>
-<circle class="region" data-group="6" id="r6_eye" cx="112" cy="178" r="24" ${S2}/>
+<rect class="region" data-group="1" id="r1_wu" x="0" y="0" width="400" height="200" fill="white" stroke="none"/>
+<rect class="region" data-group="2" id="r2_wl" x="0" y="200" width="400" height="200" fill="white" stroke="none"/>
+<ellipse class="region" data-group="3" id="r3_sw" cx="55" cy="315" rx="14" ry="65" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="20" id="r20_co" cx="342" cy="325" r="22" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="19" id="r19_bu" cx="352" cy="68" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<path class="region" data-group="7" id="r7_tfu" d="M308,178 C340,138 392,112 400,90 C394,148 388,175 395,200 L308,200 Z" ${S}/>
+<path class="region" data-group="8" id="r8_tfl" d="M308,200 L395,200 C388,225 390,262 400,310 C392,288 340,262 308,222 Z" ${S}/>
+<path class="region" data-group="16" id="r16_af" d="M150,295 C140,322 160,340 178,322 C172,308 162,298 150,295 Z" ${S2}/>
+<path class="region" data-group="4" id="r4_body" d="M310,200 C310,148 278,108 220,94 C162,80 110,96 84,132 C58,165 58,236 84,270 C110,305 162,320 220,305 C278,290 310,252 310,200 Z" ${S}/>
+<ellipse class="region" data-group="5" id="r5_hd" cx="90" cy="200" rx="50" ry="70" ${S2}/>
+<path class="region" data-group="10" id="r10_bly" d="M92,238 C108,278 148,310 200,308 C248,308 286,278 302,238 C278,262 250,272 220,268 C186,264 158,250 130,230 Z" ${S2}/>
+<ellipse class="region" data-group="11" id="r11_sba" cx="198" cy="148" rx="65" ry="22" ${S2}/>
+<ellipse class="region" data-group="12" id="r12_sbb" cx="198" cy="268" rx="60" ry="20" ${S2}/>
+<ellipse class="region" data-group="15" id="r15_gl" cx="128" cy="200" rx="22" ry="42" ${S2}/>
+<path class="region" data-group="9" id="r9_pf" d="M218,190 C228,207 235,230 224,250 C210,260 195,252 190,240 C196,220 206,200 218,190 Z" ${S2}/>
+<path class="region" data-group="6" id="r6_df" d="M178,98 C188,70 210,48 232,44 C245,55 248,75 236,94 Z" ${S2}/>
+<ellipse class="region" data-group="17" id="r17_di" cx="210" cy="70" rx="25" ry="12" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<ellipse class="region" data-group="18" id="r18_ts" cx="362" cy="200" rx="22" ry="30" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="13" id="r13_mo" cx="66" cy="202" r="18" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="14" id="r14_ey" cx="112" cy="178" r="24" ${S2}/>
 <circle cx="116" cy="180" r="12" fill="#2c3e50" pointer-events="none"/>
 <circle cx="112" cy="175" r="4" fill="white" pointer-events="none"/>
-<path d="M84,200 Q76,208 84,215" fill="none" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
 <path d="M180,140 Q195,155 178,170" fill="none" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
 <path d="M210,135 Q228,152 210,168" fill="none" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
-<path d="M242,142 Q258,158 240,174" fill="none" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
-<path d="M165,172 Q180,188 162,204" fill="none" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
-${L(22,22,1,13)}${L(185,195,2)}${L(376,200,3)}${L(210,66,4,12)}
-${L(185,280,5,12)}${L(112,178,6,11)}${L(215,228,7,12)}
+${L(22,22,1,12)}${L(22,375,2,12)}${L(55,315,3,10)}
+${L(185,195,4)}${L(80,240,5,11)}
+${L(205,88,6,10)}${L(355,165,7,11)}${L(355,235,8,11)}
+${L(215,228,9,11)}${L(182,280,10,11)}
+${L(195,148,11,11)}${L(195,268,12,11)}
+${L(66,202,13,10)}${L(112,178,14,11)}${L(125,200,15,10)}${L(162,318,16,10)}
+${L(210,70,17,9)}${L(362,200,18,10)}${L(352,68,19,10)}${L(342,325,20,11)}
 `)},
 
 // 4 青蛙
 {id:4,name:'青蛙',emoji:'🐸',
 palette:[
-  {n:1,c:'#B2DFDB',label:'薄荷'},{n:2,c:'#2E8B57',label:'深綠'},
-  {n:3,c:'#7BC67E',label:'草綠'},{n:4,c:'#DCEDC8',label:'嫩綠'},
-  {n:5,c:'#FFD700',label:'金黃'},{n:6,c:'#1B5E20',label:'墨綠'},
-  {n:7,c:'#388E3C',label:'中綠'}
+  {n:1,c:'#87CEEB',label:'天空'},{n:2,c:'#1E88E5',label:'水面'},
+  {n:3,c:'#388E3C',label:'荷葉'},{n:4,c:'#4CAF50',label:'身體'},
+  {n:5,c:'#A5D6A7',label:'腹部'},{n:6,c:'#2E7D32',label:'左後腿'},
+  {n:7,c:'#1B5E20',label:'右後腿'},{n:8,c:'#66BB6A',label:'左前臂'},
+  {n:9,c:'#43A047',label:'右前臂'},{n:10,c:'#64DD17',label:'左趾蹼'},
+  {n:11,c:'#AEEA00',label:'右趾蹼'},{n:12,c:'#F9A825',label:'左眼白'},
+  {n:13,c:'#F57F17',label:'右眼白'},{n:14,c:'#1A237E',label:'左眼珠'},
+  {n:15,c:'#0D47A1',label:'右眼珠'},{n:16,c:'#FF5722',label:'背紋左'},
+  {n:17,c:'#FF7043',label:'背紋右'},{n:18,c:'#FFD600',label:'喉嚨'},
+  {n:19,c:'#FF4081',label:'荷花'},{n:20,c:'#29B6F6',label:'水漣'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<rect class="region" data-group="1" id="r1_sky" x="0" y="0" width="400" height="210" fill="white" stroke="none"/>
+<rect class="region" data-group="2" id="r2_pond" x="0" y="210" width="400" height="190" fill="white" stroke="none"/>
+<ellipse class="region" data-group="3" id="r3_lily" cx="60" cy="342" rx="48" ry="22" fill="white" stroke="#2c3e50" stroke-width="2"/>
+<ellipse class="region" data-group="20" id="r20_rip" cx="322" cy="345" rx="30" ry="14" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="19" id="r19_flo" cx="65" cy="328" r="15" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
 <path class="region" data-group="6" id="r6_bll" d="M88,315 C60,335 22,348 8,375 C12,396 35,402 58,392 C82,378 108,350 118,318 Z" ${S}/>
-<path class="region" data-group="6" id="r6_blr" d="M312,315 C340,335 378,348 392,375 C388,396 365,402 342,392 C318,378 292,350 282,318 Z" ${S}/>
-<path class="region" data-group="7" id="r7_al" d="M88,268 C58,275 25,288 12,315 C16,332 30,338 44,330 C68,315 86,290 92,272 Z" ${S}/>
-<path class="region" data-group="7" id="r7_ar" d="M312,268 C342,275 375,288 388,315 C384,332 370,338 356,330 C332,315 314,290 308,272 Z" ${S}/>
-<path class="region" data-group="2" id="r2_body" d="M80,288 C80,222 120,172 200,168 C280,172 320,222 320,288 C320,342 286,376 248,388 C228,395 172,395 152,388 C114,376 80,342 80,288 Z" ${S}/>
-<ellipse class="region" data-group="3" id="r3_belly" cx="200" cy="295" rx="85" ry="80" ${S2}/>
-<circle class="region" data-group="4" id="r4_ewl" cx="148" cy="175" r="40" ${S}/>
-<circle class="region" data-group="4" id="r4_ewr" cx="252" cy="175" r="40" ${S}/>
-<circle class="region" data-group="5" id="r5_eil" cx="148" cy="180" r="22" ${S2}/>
-<circle class="region" data-group="5" id="r5_eir" cx="252" cy="180" r="22" ${S2}/>
+<path class="region" data-group="7" id="r7_blr" d="M312,315 C340,335 378,348 392,375 C388,396 365,402 342,392 C318,378 292,350 282,318 Z" ${S}/>
+<ellipse class="region" data-group="10" id="r10_ltw" cx="50" cy="370" rx="28" ry="15" ${S2}/>
+<ellipse class="region" data-group="11" id="r11_rtw" cx="350" cy="370" rx="28" ry="15" ${S2}/>
+<path class="region" data-group="8" id="r8_al" d="M88,268 C58,275 25,288 12,315 C16,332 30,338 44,330 C68,315 86,290 92,272 Z" ${S}/>
+<path class="region" data-group="9" id="r9_ar" d="M312,268 C342,275 375,288 388,315 C384,332 370,338 356,330 C332,315 314,290 308,272 Z" ${S}/>
+<path class="region" data-group="4" id="r4_body" d="M80,288 C80,222 120,172 200,168 C280,172 320,222 320,288 C320,342 286,376 248,388 C228,395 172,395 152,388 C114,376 80,342 80,288 Z" ${S}/>
+<circle class="region" data-group="16" id="r16_bsl" cx="148" cy="242" r="22" ${S2}/>
+<circle class="region" data-group="17" id="r17_bsr" cx="252" cy="242" r="22" ${S2}/>
+<ellipse class="region" data-group="5" id="r5_bly" cx="200" cy="295" rx="85" ry="80" ${S2}/>
+<ellipse class="region" data-group="18" id="r18_thr" cx="200" cy="262" rx="40" ry="25" ${S2}/>
+<circle class="region" data-group="12" id="r12_ewl" cx="148" cy="175" r="40" ${S}/>
+<circle class="region" data-group="13" id="r13_ewr" cx="252" cy="175" r="40" ${S}/>
+<circle class="region" data-group="14" id="r14_eil" cx="148" cy="180" r="22" ${S2}/>
+<circle class="region" data-group="15" id="r15_eir" cx="252" cy="180" r="22" ${S2}/>
 <ellipse cx="148" cy="182" rx="10" ry="14" fill="#2c3e50" pointer-events="none"/>
 <ellipse cx="252" cy="182" rx="10" ry="14" fill="#2c3e50" pointer-events="none"/>
 <circle cx="144" cy="177" r="4" fill="white" pointer-events="none"/>
 <circle cx="248" cy="177" r="4" fill="white" pointer-events="none"/>
 <path d="M162,308 Q200,325 238,308" fill="none" stroke="#2c3e50" stroke-width="2.5" pointer-events="none"/>
-<circle cx="188" cy="228" r="5" fill="#2c3e50" pointer-events="none"/>
-<circle cx="212" cy="228" r="5" fill="#2c3e50" pointer-events="none"/>
-${L(22,22,1,13)}${L(105,250,2)}${L(200,295,3)}
-${L(148,145,4,12)}${L(252,145,4,12)}${L(148,180,5,10)}${L(252,180,5,10)}
-${L(55,365,6,12)}${L(345,365,6,12)}${L(38,300,7,12)}${L(362,300,7,12)}
+${L(22,22,1,12)}${L(22,378,2,12)}${L(60,342,3,11)}
+${L(105,248,4)}${L(200,340,5)}
+${L(55,358,6,12)}${L(345,358,7,12)}
+${L(38,298,8,12)}${L(362,298,9,12)}
+${L(50,370,10,10)}${L(350,370,11,10)}
+${L(148,145,12,12)}${L(252,145,13,12)}
+${L(148,180,14,10)}${L(252,180,15,10)}
+${L(148,242,16,11)}${L(252,242,17,11)}
+${L(200,262,18,11)}${L(65,328,19,10)}${L(322,345,20,11)}
 `)},
 
 // 5 兔子
 {id:5,name:'兔子',emoji:'🐰',
 palette:[
-  {n:1,c:'#C5CAE9',label:'藍紫'},{n:2,c:'#9E9E9E',label:'灰色'},
-  {n:3,c:'#F06292',label:'桃紅'},{n:4,c:'#E8EAF6',label:'淡紫'},
-  {n:5,c:'#E91E63',label:'深粉'},{n:6,c:'#90A4AE',label:'藍灰'},
-  {n:7,c:'#FF8A65',label:'橘粉'}
+  {n:1,c:'#87CEEB',label:'天空'},{n:2,c:'#4CAF50',label:'草地'},
+  {n:3,c:'#FF6F00',label:'胡蘿蔔'},{n:4,c:'#9E9E9E',label:'左外耳'},
+  {n:5,c:'#757575',label:'右外耳'},{n:6,c:'#FF8A80',label:'左耳內'},
+  {n:7,c:'#FF5252',label:'右耳內'},{n:8,c:'#B39DDB',label:'身體'},
+  {n:9,c:'#CE93D8',label:'頭部'},{n:10,c:'#F48FB1',label:'腹部'},
+  {n:11,c:'#FF4081',label:'鼻子'},{n:12,c:'#9575CD',label:'左前掌'},
+  {n:13,c:'#7E57C2',label:'右前掌'},{n:14,c:'#673AB7',label:'左後腳'},
+  {n:15,c:'#5E35B1',label:'右後腳'},{n:16,c:'#F06292',label:'尾巴'},
+  {n:17,c:'#43A047',label:'左眼'},{n:18,c:'#2E7D32',label:'右眼'},
+  {n:19,c:'#FFCA28',label:'左頰'},{n:20,c:'#FF7043',label:'右頰'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="2" id="r2_el" d="M145,178 C138,130 124,58 126,16 C132,7 155,7 160,16 C165,58 158,130 155,178 Z" ${S}/>
-<path class="region" data-group="2" id="r2_er" d="M255,178 C262,130 276,58 274,16 C268,7 245,7 240,16 C235,58 242,130 245,178 Z" ${S}/>
-<path class="region" data-group="3" id="r3_iel" d="M147,174 C141,130 130,62 132,22 C136,15 155,15 158,22 C159,62 153,130 148,174 Z" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
-<path class="region" data-group="3" id="r3_ier" d="M253,174 C259,130 270,62 268,22 C264,15 245,15 242,22 C241,62 247,130 252,174 Z" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
-<path class="region" data-group="2" id="r2_body" d="M118,262 C108,296 106,338 110,378 C113,394 122,402 138,402 L262,402 C278,402 287,394 290,378 C294,338 292,296 282,262 C268,242 240,236 200,236 C160,236 132,242 118,262 Z" ${S}/>
-<circle class="region" data-group="2" id="r2_hd" cx="200" cy="192" r="78" ${S}/>
-<circle class="region" data-group="6" id="r6_tail" cx="292" cy="358" r="30" ${S2}/>
-<ellipse class="region" data-group="4" id="r4_belly" cx="200" cy="328" rx="60" ry="72" ${S2}/>
-<ellipse class="region" data-group="7" id="r7_muz" cx="200" cy="204" rx="32" ry="24" ${S2}/>
-<circle class="region" data-group="5" id="r5_eyl" cx="170" cy="175" r="18" ${S2}/>
-<circle class="region" data-group="5" id="r5_eyr" cx="230" cy="175" r="18" ${S2}/>
+<rect class="region" data-group="1" id="r1_sky" x="0" y="0" width="400" height="242" fill="white" stroke="none"/>
+<rect class="region" data-group="2" id="r2_gnd" x="0" y="242" width="400" height="158" fill="white" stroke="none"/>
+<path class="region" data-group="3" id="r3_car" d="M48,248 L62,248 L66,290 L44,290 Z" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<path class="region" data-group="4" id="r4_loe" d="M145,178 C138,130 124,58 126,16 C132,7 155,7 160,16 C165,58 158,130 155,178 Z" ${S}/>
+<path class="region" data-group="5" id="r5_roe" d="M255,178 C262,130 276,58 274,16 C268,7 245,7 240,16 C235,58 242,130 245,178 Z" ${S}/>
+<path class="region" data-group="8" id="r8_body" d="M118,262 C108,296 106,338 110,378 C113,394 122,402 138,402 L262,402 C278,402 287,394 290,378 C294,338 292,296 282,262 C268,242 240,236 200,236 C160,236 132,242 118,262 Z" ${S}/>
+<circle class="region" data-group="16" id="r16_tail" cx="292" cy="358" r="30" ${S2}/>
+<ellipse class="region" data-group="12" id="r12_lpw" cx="158" cy="358" rx="30" ry="16" ${S2}/>
+<ellipse class="region" data-group="13" id="r13_rpw" cx="242" cy="358" rx="30" ry="16" ${S2}/>
+<ellipse class="region" data-group="14" id="r14_lhf" cx="138" cy="388" rx="32" ry="16" ${S2}/>
+<ellipse class="region" data-group="15" id="r15_rhf" cx="262" cy="388" rx="32" ry="16" ${S2}/>
+<circle class="region" data-group="9" id="r9_hd" cx="200" cy="192" r="78" ${S}/>
+<path class="region" data-group="6" id="r6_lie" d="M147,174 C141,130 130,62 132,22 C136,15 155,15 158,22 C159,62 153,130 148,174 Z" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<path class="region" data-group="7" id="r7_rie" d="M253,174 C259,130 270,62 268,22 C264,15 245,15 242,22 C241,62 247,130 252,174 Z" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<ellipse class="region" data-group="10" id="r10_bly" cx="200" cy="328" rx="60" ry="72" ${S2}/>
+<circle class="region" data-group="19" id="r19_lck" cx="158" cy="200" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="20" id="r20_rck" cx="242" cy="200" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<ellipse class="region" data-group="11" id="r11_muz" cx="200" cy="204" rx="32" ry="24" ${S2}/>
+<circle class="region" data-group="17" id="r17_eyl" cx="170" cy="175" r="18" ${S2}/>
+<circle class="region" data-group="18" id="r18_eyr" cx="230" cy="175" r="18" ${S2}/>
 <circle cx="173" cy="177" r="10" fill="#2c3e50" pointer-events="none"/>
 <circle cx="233" cy="177" r="10" fill="#2c3e50" pointer-events="none"/>
 <circle cx="170" cy="173" r="3.5" fill="white" pointer-events="none"/>
@@ -320,245 +406,324 @@ svg:mksvg(`
 <ellipse cx="200" cy="204" rx="6" ry="5" fill="#FF8FAB" pointer-events="none"/>
 <path d="M195,209 Q200,215 205,209" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
 <line x1="168" y1="204" x2="130" y2="198" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
-<line x1="168" y1="209" x2="130" y2="209" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
 <line x1="232" y1="204" x2="270" y2="198" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
-<line x1="232" y1="209" x2="270" y2="209" stroke="#2c3e50" stroke-width="1.2" pointer-events="none"/>
-${L(22,22,1,13)}${L(143,10,2,9)}${L(257,10,2,9)}${L(200,165,2)}${L(122,310,2,11)}
-${L(148,95,3,12)}${L(252,95,3,12)}${L(200,328,4,12)}
-${L(170,175,5,11)}${L(230,175,5,11)}${L(292,358,6,11)}${L(200,204,7,11)}
+${L(22,22,1,12)}${L(200,375,2,12)}${L(55,268,3,11)}
+${L(143,10,4,9)}${L(257,10,5,9)}${L(148,95,6,12)}${L(252,95,7,12)}
+${L(200,165,8)}${L(200,120,9)}
+${L(200,340,10)}${L(200,204,11,11)}
+${L(158,358,12,11)}${L(242,358,13,11)}${L(138,388,14,10)}${L(262,388,15,10)}
+${L(292,358,16,11)}${L(170,175,17,11)}${L(230,175,18,11)}
+${L(158,200,19,11)}${L(242,200,20,11)}
 `)},
 
 // 6 蜜蜂
 {id:6,name:'蜜蜂',emoji:'🐝',
 palette:[
-  {n:1,c:'#87CEEB',label:'天藍'},{n:2,c:'#FFD700',label:'黃色'},
-  {n:3,c:'#333333',label:'黑色'},{n:4,c:'#90CAF9',label:'藍色'},
-  {n:5,c:'#FFC107',label:'琥珀'},{n:6,c:'#555555',label:'深灰'},
-  {n:7,c:'#111111',label:'深黑'}
+  {n:1,c:'#87CEEB',label:'天空'},{n:2,c:'#FF4081',label:'左花瓣'},
+  {n:3,c:'#EC407A',label:'右花瓣'},{n:4,c:'#90CAF9',label:'左上翅'},
+  {n:5,c:'#64B5F6',label:'右上翅'},{n:6,c:'#42A5F5',label:'左下翅'},
+  {n:7,c:'#1E88E5',label:'右下翅'},{n:8,c:'#F9A825',label:'頭部'},
+  {n:9,c:'#FF5722',label:'左觸角'},{n:10,c:'#E91E63',label:'右觸角'},
+  {n:11,c:'#FFD700',label:'黃紋1'},{n:12,c:'#212121',label:'黑紋1'},
+  {n:13,c:'#FF6F00',label:'黃紋2'},{n:14,c:'#1A1A1A',label:'黑紋2'},
+  {n:15,c:'#FF8F00',label:'黃紋3'},{n:16,c:'#37474F',label:'尾針'},
+  {n:17,c:'#80DEEA',label:'左眼'},{n:18,c:'#00BCD4',label:'右眼'},
+  {n:19,c:'#FFCA28',label:'左花心'},{n:20,c:'#FF8C00',label:'右花心'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<rect class="region" data-group="1" id="r1_sky" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<circle class="region" data-group="2" id="r2_lfl" cx="55" cy="350" r="38" fill="white" stroke="#2c3e50" stroke-width="2"/>
+<circle class="region" data-group="3" id="r3_rfl" cx="345" cy="350" r="38" fill="white" stroke="#2c3e50" stroke-width="2"/>
+<circle class="region" data-group="19" id="r19_lfc" cx="55" cy="350" r="18" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="20" id="r20_rfc" cx="345" cy="350" r="18" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
 <ellipse class="region" data-group="4" id="r4_wul" cx="130" cy="198" rx="68" ry="36" ${S2}/>
-<ellipse class="region" data-group="4" id="r4_wur" cx="270" cy="198" rx="68" ry="36" ${S2}/>
-<ellipse class="region" data-group="4" id="r4_wll" cx="142" cy="232" rx="50" ry="26" ${S2}/>
-<ellipse class="region" data-group="4" id="r4_wlr" cx="258" cy="232" rx="50" ry="26" ${S2}/>
-<path class="region" data-group="7" id="r7_sting" d="M192,358 C196,372 199,392 200,400 C201,392 204,372 208,358 C204,350 196,350 192,358 Z" ${S2}/>
-<path class="region" data-group="2" id="r2_y1" d="M138,240 C143,220 165,210 200,210 C235,210 257,220 262,240 C258,255 238,262 200,262 C162,262 142,255 138,240 Z" ${S}/>
-<path class="region" data-group="3" id="r3_b1" d="M136,258 C141,246 163,240 200,240 C237,240 259,246 264,258 C260,275 238,282 200,282 C162,282 140,275 136,258 Z" ${S}/>
-<path class="region" data-group="2" id="r2_y2" d="M135,278 C140,265 162,258 200,258 C238,258 260,265 265,278 C260,295 238,302 200,302 C162,302 140,295 135,278 Z" ${S}/>
-<path class="region" data-group="3" id="r3_b2" d="M134,298 C140,284 162,278 200,278 C238,278 260,284 266,298 C262,318 240,328 200,328 C160,328 138,318 134,298 Z" ${S}/>
-<path class="region" data-group="2" id="r2_y3" d="M135,324 C140,308 162,298 200,298 C238,298 260,308 265,324 C262,352 248,368 200,368 C152,368 138,352 135,324 Z" ${S}/>
-<circle class="region" data-group="5" id="r5_hd" cx="200" cy="158" r="54" ${S}/>
+<ellipse class="region" data-group="5" id="r5_wur" cx="270" cy="198" rx="68" ry="36" ${S2}/>
+<ellipse class="region" data-group="6" id="r6_wll" cx="142" cy="232" rx="50" ry="26" ${S2}/>
+<ellipse class="region" data-group="7" id="r7_wlr" cx="258" cy="232" rx="50" ry="26" ${S2}/>
+<path class="region" data-group="16" id="r16_st" d="M184,358 C190,372 196,392 200,400 C204,392 210,372 216,358 C210,348 190,348 184,358 Z" ${S2}/>
+<path class="region" data-group="11" id="r11_y1" d="M138,240 C143,220 165,210 200,210 C235,210 257,220 262,240 C258,255 238,262 200,262 C162,262 142,255 138,240 Z" ${S}/>
+<path class="region" data-group="12" id="r12_b1" d="M136,258 C141,246 163,240 200,240 C237,240 259,246 264,258 C260,275 238,282 200,282 C162,282 140,275 136,258 Z" ${S}/>
+<path class="region" data-group="13" id="r13_y2" d="M135,278 C140,265 162,258 200,258 C238,258 260,265 265,278 C260,295 238,302 200,302 C162,302 140,295 135,278 Z" ${S}/>
+<path class="region" data-group="14" id="r14_b2" d="M134,298 C140,284 162,278 200,278 C238,278 260,284 266,298 C262,318 240,328 200,328 C160,328 138,318 134,298 Z" ${S}/>
+<path class="region" data-group="15" id="r15_y3" d="M135,324 C140,308 162,298 200,298 C238,298 260,308 265,324 C262,352 248,368 200,368 C152,368 138,352 135,324 Z" ${S}/>
+<circle class="region" data-group="8" id="r8_hd" cx="200" cy="158" r="54" ${S}/>
+<circle class="region" data-group="17" id="r17_le" cx="180" cy="152" r="15" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="18" id="r18_re" cx="220" cy="152" r="15" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
 <line x1="182" y1="107" x2="162" y2="82" stroke="#2c3e50" stroke-width="2.5" pointer-events="none"/>
 <line x1="218" y1="107" x2="238" y2="82" stroke="#2c3e50" stroke-width="2.5" pointer-events="none"/>
-<circle class="region" data-group="6" id="r6_al" cx="158" cy="78" r="11" ${S2}/>
-<circle class="region" data-group="6" id="r6_ar" cx="242" cy="78" r="11" ${S2}/>
-<circle cx="180" cy="152" r="15" fill="white" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
-<circle cx="220" cy="152" r="15" fill="white" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
-<circle cx="183" cy="154" r="8" fill="#2c3e50" pointer-events="none"/>
-<circle cx="223" cy="154" r="8" fill="#2c3e50" pointer-events="none"/>
-<circle cx="181" cy="151" r="3" fill="white" pointer-events="none"/>
-<circle cx="221" cy="151" r="3" fill="white" pointer-events="none"/>
+<circle class="region" data-group="9" id="r9_al" cx="158" cy="78" r="11" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="10" id="r10_ar" cx="242" cy="78" r="11" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle cx="183" cy="154" r="7" fill="#2c3e50" pointer-events="none"/>
+<circle cx="223" cy="154" r="7" fill="#2c3e50" pointer-events="none"/>
+<circle cx="181" cy="151" r="2.5" fill="white" pointer-events="none"/>
+<circle cx="221" cy="151" r="2.5" fill="white" pointer-events="none"/>
 <path d="M185,172 Q200,182 215,172" fill="none" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
-${L(22,22,1,13)}${L(200,225,2)}${L(200,270,2,11)}${L(200,338,2,11)}
-${L(200,250,3)}${L(200,290,3,11)}
-${L(72,198,4,12)}${L(328,198,4,12)}${L(100,232,4,11)}${L(300,232,4,11)}
-${L(200,158,5)}${L(158,78,6,10)}${L(242,78,6,10)}${L(200,396,7,10)}
+${L(22,22,1,12)}
+${L(55,325,2,10)}${L(345,325,3,10)}
+${L(72,198,4,12)}${L(328,198,5,12)}${L(100,232,6,11)}${L(300,232,7,11)}
+${L(200,158,8)}${L(158,78,9,10)}${L(242,78,10,10)}
+${L(200,225,11)}${L(200,250,12,11)}${L(200,268,13,11)}${L(200,290,14,11)}${L(200,338,15)}
+${L(200,373,16,9)}${L(180,152,17,10)}${L(220,152,18,10)}
+${L(55,350,19,10)}${L(345,350,20,10)}
 `)},
 
 // 7 貓頭鷹
 {id:7,name:'貓頭鷹',emoji:'🦉',
 palette:[
-  {n:1,c:'#1A237E',label:'深藍'},{n:2,c:'#8B6914',label:'土黃'},
-  {n:3,c:'#4A3728',label:'深棕'},{n:4,c:'#FFF176',label:'亮黃'},
-  {n:5,c:'#FFD700',label:'金黃'},{n:6,c:'#FF8C00',label:'橙色'},
-  {n:7,c:'#FF7043',label:'橘色'},{n:8,c:'#5D4037',label:'咖啡'}
+  {n:1,c:'#1A237E',label:'夜空'},{n:2,c:'#4E342E',label:'地面'},
+  {n:3,c:'#FFD740',label:'月亮'},{n:4,c:'#F57C00',label:'身體'},
+  {n:5,c:'#FF8F00',label:'頭部'},{n:6,c:'#2196F3',label:'左翅'},
+  {n:7,c:'#1976D2',label:'右翅'},{n:8,c:'#FF5722',label:'左耳羽'},
+  {n:9,c:'#E64A19',label:'右耳羽'},{n:10,c:'#FFC107',label:'臉盤'},
+  {n:11,c:'#4CAF50',label:'左眼'},{n:12,c:'#2E7D32',label:'右眼'},
+  {n:13,c:'#FF4081',label:'嘴巴'},{n:14,c:'#FF9100',label:'胸紋A'},
+  {n:15,c:'#FF6D00',label:'胸紋B'},{n:16,c:'#E91E63',label:'尾羽'},
+  {n:17,c:'#9C27B0',label:'左爪'},{n:18,c:'#7B1FA2',label:'右爪'},
+  {n:19,c:'#FFEB3B',label:'星星'},{n:20,c:'#5D4037',label:'樹枝'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<rect class="region" data-group="1" id="r1_sky" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
+<rect class="region" data-group="2" id="r2_gnd" x="0" y="368" width="400" height="32" fill="white" stroke="#2c3e50" stroke-width="1"/>
+<circle class="region" data-group="3" id="r3_moon" cx="330" cy="65" r="32" fill="white" stroke="#2c3e50" stroke-width="2"/>
+<circle class="region" data-group="19" id="r19_str" cx="62" cy="90" r="14" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<rect class="region" data-group="20" id="r20_bra" x="0" y="356" width="400" height="18" rx="5" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<path class="region" data-group="16" id="r16_tail" d="M165,385 L175,400 L190,388 L200,402 L210,388 L225,400 L235,385 C225,375 215,370 200,368 C185,370 175,375 165,385 Z" ${S2}/>
+<path class="region" data-group="6" id="r6_wl" d="M90,288 C62,312 42,355 46,388 L88,390 C105,350 112,308 95,285 Z" ${S}/>
+<path class="region" data-group="7" id="r7_wr" d="M310,288 C338,312 358,355 354,388 L312,390 C295,350 288,308 305,285 Z" ${S}/>
 <polygon class="region" data-group="8" id="r8_etl" points="148,88,126,24,178,70" ${S}/>
-<polygon class="region" data-group="8" id="r8_etr" points="252,88,274,24,222,70" ${S}/>
-<path class="region" data-group="3" id="r3_wl" d="M90,288 C62,312 42,355 46,388 L88,390 C105,350 112,308 95,285 Z" ${S}/>
-<path class="region" data-group="3" id="r3_wr" d="M310,288 C338,312 358,355 354,388 L312,390 C295,350 288,308 305,285 Z" ${S}/>
-<path class="region" data-group="2" id="r2_body" d="M88,390 C88,312 112,248 142,212 C162,185 182,172 200,172 C218,172 238,185 258,212 C288,248 312,312 312,390 Z" ${S}/>
-<circle class="region" data-group="2" id="r2_hd" cx="200" cy="158" r="98" ${S}/>
-<ellipse class="region" data-group="4" id="r4_face" cx="200" cy="163" rx="74" ry="82" ${S2}/>
-<circle class="region" data-group="5" id="r5_eyl" cx="170" cy="148" r="32" ${S}/>
-<circle class="region" data-group="5" id="r5_eyr" cx="230" cy="148" r="32" ${S}/>
+<polygon class="region" data-group="9" id="r9_etr" points="252,88,274,24,222,70" ${S}/>
+<path class="region" data-group="4" id="r4_body" d="M88,390 C88,312 112,248 142,212 C162,185 182,172 200,172 C218,172 238,185 258,212 C288,248 312,312 312,390 Z" ${S}/>
+<circle class="region" data-group="5" id="r5_hd" cx="200" cy="158" r="98" ${S}/>
+<ellipse class="region" data-group="15" id="r15_chb" cx="200" cy="305" rx="48" ry="26" ${S2}/>
+<ellipse class="region" data-group="14" id="r14_cha" cx="200" cy="350" rx="58" ry="28" ${S2}/>
+<path class="region" data-group="17" id="r17_lta" d="M148,388 C136,398 118,407 106,412 L122,412 C136,403 148,395 156,388 C164,395 170,403 178,412 L194,412 C185,400 168,386 168,372 Z" ${S2}/>
+<path class="region" data-group="18" id="r18_rta" d="M252,388 C264,398 282,407 294,412 L278,412 C264,403 252,395 244,388 C236,395 230,403 222,412 L206,412 C215,400 232,386 232,372 Z" ${S2}/>
+<ellipse class="region" data-group="10" id="r10_face" cx="200" cy="163" rx="74" ry="82" ${S2}/>
+<circle class="region" data-group="11" id="r11_eyl" cx="170" cy="148" r="32" ${S}/>
+<circle class="region" data-group="12" id="r12_eyr" cx="230" cy="148" r="32" ${S}/>
 <circle cx="170" cy="152" r="18" fill="#2c3e50" pointer-events="none"/>
 <circle cx="230" cy="152" r="18" fill="#2c3e50" pointer-events="none"/>
 <circle cx="164" cy="144" r="6" fill="white" pointer-events="none"/>
 <circle cx="224" cy="144" r="6" fill="white" pointer-events="none"/>
-<polygon class="region" data-group="6" id="r6_beak" points="186,182,214,182,200,210" ${S}/>
-<path d="M128,280 Q148,265 168,280 Q188,295 208,280" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<path d="M128,312 Q148,297 168,312 Q188,327 208,312 Q228,297 248,312" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<path d="M128,344 Q148,329 168,344 Q188,359 208,344 Q228,329 248,344 Q268,329 288,344" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<path class="region" data-group="7" id="r7_fl" d="M148,388 C136,398 118,407 106,412 L122,412 C136,403 148,395 156,388 C164,395 170,403 178,412 L194,412 C185,400 168,386 168,372 Z" ${S2}/>
-<path class="region" data-group="7" id="r7_fr" d="M252,388 C264,398 282,407 294,412 L278,412 C264,403 252,395 244,388 C236,395 230,403 222,412 L206,412 C215,400 232,386 232,372 Z" ${S2}/>
-<rect x="0" y="388" width="400" height="18" rx="4" fill="#6D4C41" stroke="#4A2E20" stroke-width="2" pointer-events="none"/>
-${L(22,22,1,13)}${L(200,70,2,11)}${L(200,355,2)}
-${L(68,345,3,12)}${L(332,345,3,12)}
-${L(200,163,4,12)}${L(170,148,5,12)}${L(230,148,5,12)}
-${L(200,196,6,11)}${L(130,400,7,10)}${L(270,400,7,10)}
-${L(152,50,8,11)}${L(248,50,8,11)}
+<polygon class="region" data-group="13" id="r13_bk" points="186,182,214,182,200,210" ${S}/>
+<path d="M128,260 Q148,245 168,260 Q188,275 208,260" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
+${L(22,22,1,12)}${L(22,382,2,12)}${L(330,65,3,12)}
+${L(118,355,4,11)}${L(118,150,5,11)}
+${L(68,345,6,12)}${L(332,345,7,12)}
+${L(152,50,8,11)}${L(248,50,9,11)}
+${L(200,163,10,12)}${L(170,148,11,12)}${L(230,148,12,12)}${L(200,196,13,11)}
+${L(200,350,14,12)}${L(200,305,15,12)}
+${L(200,390,16,10)}${L(130,400,17,10)}${L(270,400,18,10)}
+${L(62,90,19,10)}${L(200,364,20,11)}
 `)},
 
 // 8 企鵝
 {id:8,name:'企鵝',emoji:'🐧',
 palette:[
-  {n:1,c:'#87CEEB',label:'天藍'},{n:2,c:'#1A1A2E',label:'黑色'},
-  {n:3,c:'#CFD8DC',label:'淺藍'},{n:4,c:'#FF8C00',label:'橙嘴'},
-  {n:5,c:'#FF7043',label:'橘腳'},{n:6,c:'#FFF9C4',label:'奶黃'},
-  {n:7,c:'#90CAF9',label:'淡藍'}
+  {n:1,c:'#87CEEB',label:'天空'},{n:2,c:'#B3E5FC',label:'冰地'},
+  {n:3,c:'#1E88E5',label:'海水'},{n:4,c:'#1A237E',label:'左翅'},
+  {n:5,c:'#283593',label:'右翅'},{n:6,c:'#1A1A2E',label:'身體'},
+  {n:7,c:'#212121',label:'頭部'},{n:8,c:'#FFD700',label:'臉前'},
+  {n:9,c:'#FFEB3B',label:'腹部'},{n:10,c:'#FF8C00',label:'嘴巴'},
+  {n:11,c:'#FF5722',label:'左腳'},{n:12,c:'#E64A19',label:'右腳'},
+  {n:13,c:'#9C27B0',label:'左眼'},{n:14,c:'#7B1FA2',label:'右眼'},
+  {n:15,c:'#37474F',label:'頭頂'},  {n:16,c:'#F9A825',label:'左頰'},
+  {n:17,c:'#FF6F00',label:'右頰'},{n:18,c:'#FF4081',label:'圍巾'},
+  {n:19,c:'#E91E63',label:'小魚'},{n:20,c:'#CFD8DC',label:'浮冰'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="2" id="r2_wl" d="M105,228 C72,242 40,268 28,298 C22,322 30,342 48,344 C68,346 90,320 102,290 C112,265 110,238 105,228 Z" ${S}/>
-<path class="region" data-group="2" id="r2_wr" d="M295,228 C328,242 360,268 372,298 C378,322 370,342 352,344 C332,346 310,320 298,290 C288,265 290,238 295,228 Z" ${S}/>
-<path class="region" data-group="2" id="r2_body" d="M133,125 C112,150 100,192 100,250 C100,322 120,375 150,398 C165,407 182,410 200,410 C218,410 235,407 250,398 C280,375 300,322 300,250 C300,192 288,150 267,125 C252,102 228,90 200,90 C172,90 148,102 133,125 Z" ${S}/>
-<circle class="region" data-group="2" id="r2_hd" cx="200" cy="128" r="75" ${S}/>
-<ellipse class="region" data-group="6" id="r6_face" cx="200" cy="118" rx="55" ry="50" ${S2}/>
-<path class="region" data-group="3" id="r3_belly" d="M162,232 C155,268 155,322 162,362 C170,392 185,408 200,409 C215,408 230,392 238,362 C245,322 245,268 238,232 C230,208 220,196 200,196 C180,196 170,208 162,232 Z" ${S2}/>
-<path class="region" data-group="4" id="r4_beak" d="M184,148 C190,162 196,175 200,182 C204,175 210,162 216,148 C211,140 206,136 200,136 C194,136 189,140 184,148 Z" ${S2}/>
-<path class="region" data-group="5" id="r5_fl" d="M155,398 C142,408 125,415 114,420 L132,420 C146,411 156,403 163,396 C170,403 176,411 182,420 L200,420 C192,408 175,396 172,382 Z" ${S2}/>
-<path class="region" data-group="5" id="r5_fr" d="M245,398 C258,408 275,415 286,420 L268,420 C254,411 244,403 237,396 C230,403 224,411 218,420 L200,420 C208,408 225,396 228,382 Z" ${S2}/>
-<circle class="region" data-group="7" id="r7_eyl" cx="180" cy="116" r="18" ${S2}/>
-<circle class="region" data-group="7" id="r7_eyr" cx="220" cy="116" r="18" ${S2}/>
-<circle cx="182" cy="118" r="10" fill="#2c3e50" pointer-events="none"/>
-<circle cx="222" cy="118" r="10" fill="#2c3e50" pointer-events="none"/>
-<circle cx="179" cy="114" r="3.5" fill="white" pointer-events="none"/>
-<circle cx="219" cy="114" r="3.5" fill="white" pointer-events="none"/>
-${L(22,22,1,13)}${L(58,285,2,11)}${L(342,285,2,11)}${L(200,60,2,10)}${L(125,280,2,11)}
-${L(200,305,3)}${L(200,160,4,11)}
-${L(130,410,5,10)}${L(270,410,5,10)}${L(200,118,6,11)}
-${L(180,116,7,10)}${L(220,116,7,10)}
+<rect class="region" data-group="1" id="r1_sky" x="0" y="0" width="400" height="232" fill="white" stroke="none"/>
+<rect class="region" data-group="2" id="r2_ice" x="0" y="232" width="400" height="100" fill="white" stroke="none"/>
+<rect class="region" data-group="3" id="r3_wtr" x="0" y="332" width="400" height="68" fill="white" stroke="none"/>
+<ellipse class="region" data-group="20" id="r20_rk" cx="340" cy="320" rx="35" ry="22" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<ellipse class="region" data-group="19" id="r19_fs" cx="68" cy="352" rx="22" ry="10" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<path class="region" data-group="4" id="r4_wl" d="M105,228 C72,242 40,268 28,298 C22,322 30,342 48,344 C68,346 90,320 102,290 C112,265 110,238 105,228 Z" ${S}/>
+<path class="region" data-group="5" id="r5_wr" d="M295,228 C328,242 360,268 372,298 C378,322 370,342 352,344 C332,346 310,320 298,290 C288,265 290,238 295,228 Z" ${S}/>
+<path class="region" data-group="6" id="r6_body" d="M133,125 C112,150 100,192 100,250 C100,322 120,375 150,398 C165,407 182,410 200,410 C218,410 235,407 250,398 C280,375 300,322 300,250 C300,192 288,150 267,125 C252,102 228,90 200,90 C172,90 148,102 133,125 Z" ${S}/>
+<circle class="region" data-group="7" id="r7_hd" cx="200" cy="128" r="75" ${S}/>
+<ellipse class="region" data-group="15" id="r15_hr" cx="200" cy="75" rx="52" ry="24" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<ellipse class="region" data-group="8" id="r8_face" cx="200" cy="118" rx="55" ry="50" ${S2}/>
+<circle class="region" data-group="16" id="r16_lck" cx="156" cy="122" r="18" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<circle class="region" data-group="17" id="r17_rck" cx="244" cy="122" r="18" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+<path class="region" data-group="9" id="r9_bly" d="M162,232 C155,268 155,322 162,362 C170,392 185,408 200,409 C215,408 230,392 238,362 C245,322 245,268 238,232 C230,208 220,196 200,196 C180,196 170,208 162,232 Z" ${S2}/>
+<ellipse class="region" data-group="18" id="r18_sca" cx="200" cy="212" rx="65" ry="16" ${S2}/>
+<path class="region" data-group="10" id="r10_bk" d="M184,148 C190,162 196,175 200,182 C204,175 210,162 216,148 C211,140 206,136 200,136 C194,136 189,140 184,148 Z" ${S2}/>
+<path class="region" data-group="11" id="r11_lf" d="M155,398 C142,408 125,415 114,420 L132,420 C146,411 156,403 163,396 C170,403 176,411 182,420 L200,420 C192,408 175,396 172,382 Z" ${S2}/>
+<path class="region" data-group="12" id="r12_rf" d="M245,398 C258,408 275,415 286,420 L268,420 C254,411 244,403 237,396 C230,403 224,411 218,420 L200,420 C208,408 225,396 228,382 Z" ${S2}/>
+<circle class="region" data-group="13" id="r13_le" cx="180" cy="116" r="18" ${S2}/>
+<circle class="region" data-group="14" id="r14_re" cx="220" cy="116" r="18" ${S2}/>
+<circle cx="182" cy="118" r="9" fill="#2c3e50" pointer-events="none"/>
+<circle cx="222" cy="118" r="9" fill="#2c3e50" pointer-events="none"/>
+<circle cx="179" cy="114" r="3" fill="white" pointer-events="none"/>
+<circle cx="219" cy="114" r="3" fill="white" pointer-events="none"/>
+${L(22,22,1,12)}${L(22,285,2,12)}${L(22,362,3,12)}
+${L(58,285,4,11)}${L(342,285,5,11)}
+${L(115,300,6,11)}${L(200,60,7,10)}
+${L(200,118,8,11)}${L(200,362,9)}${L(200,162,10,11)}
+${L(130,412,11,10)}${L(270,412,12,10)}
+${L(180,116,13,10)}${L(220,116,14,10)}
+${L(200,75,15,11)}${L(156,122,16,10)}${L(244,122,17,10)}
+${L(200,212,18,11)}${L(68,352,19,9)}${L(340,320,20,11)}
 `)},
 
 // 9 獅子
 {id:9,name:'獅子',emoji:'🦁',
 palette:[
-  {n:1,c:'#FFE082',label:'淺黃'},{n:2,c:'#B5651D',label:'深棕'},
-  {n:3,c:'#FFD700',label:'金黃'},{n:4,c:'#FFC107',label:'琥珀'},
-  {n:5,c:'#F06292',label:'桃紅'},{n:6,c:'#FFD54F',label:'金色'},
-  {n:7,c:'#5D4037',label:'深褐'},{n:8,c:'#4CAF50',label:'綠色'}
+  {n:1,c:'#87CEEB',label:'天藍'},{n:2,c:'#A5D6A7',label:'草綠'},
+  {n:3,c:'#FF9800',label:'橙日'},{n:4,c:'#FFCA28',label:'亮黃'},
+  {n:5,c:'#8D1C00',label:'暗紅'},{n:6,c:'#D84315',label:'磚橙'},
+  {n:7,c:'#FF8F00',label:'琥珀'},{n:8,c:'#FFB74D',label:'淺橙'},
+  {n:9,c:'#FF8A65',label:'珊瑚'},{n:10,c:'#FF80AB',label:'粉紅'},
+  {n:11,c:'#F48FB1',label:'淺粉'},{n:12,c:'#FFAB91',label:'蜜桃'},
+  {n:13,c:'#E91E63',label:'玫紅'},{n:14,c:'#43A047',label:'翠綠'},
+  {n:15,c:'#1B5E20',label:'深綠'},{n:16,c:'#8D6E63',label:'棕色'},
+  {n:17,c:'#6D4C41',label:'深棕'},{n:18,c:'#FFC107',label:'橙黃'},
+  {n:19,c:'#4E342E',label:'暗褐'},{n:20,c:'#FFE0B2',label:'淡金'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="4" id="r4_body" d="M112,242 C102,278 100,330 105,378 C108,398 118,408 135,408 L265,408 C282,408 292,398 295,378 C300,330 298,278 288,242 C272,220 242,212 200,212 C158,212 128,220 112,242 Z" ${S}/>
-<path class="region" data-group="4" id="r4_tail" d="M278,358 C340,330 388,302 396,258 C402,220 380,196 354,208 C330,220 320,248 308,275 C295,298 280,322 278,345 Z" ${S}/>
-<circle class="region" data-group="7" id="r7_tuft" cx="358" cy="208" r="26" ${S2}/>
-<circle class="region" data-group="2" id="r2_mane" cx="200" cy="163" r="130" ${S}/>
-<circle class="region" data-group="3" id="r3_earl" cx="122" cy="68" r="34" ${S2}/>
-<circle class="region" data-group="3" id="r3_earr" cx="278" cy="68" r="34" ${S2}/>
-<circle class="region" data-group="5" id="r5_iel" cx="122" cy="68" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
-<circle class="region" data-group="5" id="r5_ier" cx="278" cy="68" r="20" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
-<circle class="region" data-group="3" id="r3_face" cx="200" cy="158" r="90" ${S}/>
-<ellipse class="region" data-group="6" id="r6_muz" cx="200" cy="178" rx="50" ry="36" ${S2}/>
-<circle class="region" data-group="8" id="r8_eyl" cx="172" cy="145" r="20" ${S2}/>
-<circle class="region" data-group="8" id="r8_eyr" cx="228" cy="145" r="20" ${S2}/>
-<ellipse cx="172" cy="148" rx="10" ry="13" fill="#2c3e50" pointer-events="none"/>
-<ellipse cx="228" cy="148" rx="10" ry="13" fill="#2c3e50" pointer-events="none"/>
-<circle cx="168" cy="142" r="4" fill="white" pointer-events="none"/>
-<circle cx="224" cy="142" r="4" fill="white" pointer-events="none"/>
-<path d="M191,178 Q200,172 209,178 L205,188 Q200,192 195,188 Z" fill="#FF8FAB" pointer-events="none"/>
-<path d="M190,190 Q200,200 210,190" fill="none" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
-<line x1="152" y1="178" x2="108" y2="170" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<line x1="152" y1="185" x2="108" y2="185" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<line x1="248" y1="178" x2="292" y2="170" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<line x1="248" y1="185" x2="292" y2="185" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<path d="M90,130 Q108,115 118,132" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<path d="M80,162 Q95,148 108,163" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<path d="M310,130 Q292,115 282,132" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<path d="M320,162 Q305,148 292,163" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-${L(22,22,1,13)}${L(200,50,2)}
-${L(122,42,3,11)}${L(278,42,3,11)}${L(200,125,3)}
-${L(200,368,4)}${L(352,268,4,11)}
-${L(122,68,5,11)}${L(278,68,5,11)}${L(200,178,6,12)}
-${L(358,208,7,11)}${L(172,145,8,11)}${L(228,145,8,11)}
+<rect class="region" data-group="1" id="r1_sky" x="0" y="0" width="400" height="220" ${S}/>
+<rect class="region" data-group="2" id="r2_sav" x="0" y="220" width="400" height="180" ${S}/>
+<circle class="region" data-group="3" id="r3_sun" cx="350" cy="55" r="32" ${S}/>
+<path class="region" data-group="18" id="r18_tb" d="M276,352 C340,325 384,288 370,208 C366,196 352,190 342,200 C330,228 310,270 282,322 Z" ${S}/>
+<ellipse class="region" data-group="4" id="r4_bd" cx="200" cy="310" rx="100" ry="80" ${S}/>
+<ellipse class="region" data-group="16" id="r16_lp" cx="148" cy="378" rx="36" ry="20" ${S}/>
+<ellipse class="region" data-group="17" id="r17_rp" cx="252" cy="378" rx="36" ry="20" ${S}/>
+<circle class="region" data-group="5" id="r5_mo" cx="200" cy="185" r="125" ${S}/>
+<circle class="region" data-group="6" id="r6_mi" cx="200" cy="185" r="105" ${S}/>
+<circle class="region" data-group="8" id="r8_leo" cx="135" cy="100" r="32" ${S}/>
+<circle class="region" data-group="9" id="r9_reo" cx="265" cy="100" r="32" ${S}/>
+<circle class="region" data-group="7" id="r7_hd" cx="200" cy="178" r="88" ${S}/>
+<circle class="region" data-group="10" id="r10_lei" cx="135" cy="100" r="18" ${S2}/>
+<circle class="region" data-group="11" id="r11_rei" cx="265" cy="100" r="18" ${S2}/>
+<circle class="region" data-group="19" id="r19_tt" cx="356" cy="195" r="26" ${S}/>
+<ellipse class="region" data-group="12" id="r12_mz" cx="200" cy="198" rx="48" ry="34" ${S}/>
+<ellipse class="region" data-group="20" id="r20_cp" cx="200" cy="240" rx="30" ry="14" ${S2}/>
+<ellipse class="region" data-group="13" id="r13_ns" cx="200" cy="183" rx="16" ry="10" ${S2}/>
+<circle class="region" data-group="14" id="r14_le" cx="170" cy="150" r="18" ${S2}/>
+<circle class="region" data-group="15" id="r15_re" cx="230" cy="150" r="18" ${S2}/>
+<ellipse cx="170" cy="153" rx="10" ry="13" fill="#2c3e50" pointer-events="none"/>
+<ellipse cx="230" cy="153" rx="10" ry="13" fill="#2c3e50" pointer-events="none"/>
+<circle cx="166" cy="147" r="4" fill="white" pointer-events="none"/>
+<circle cx="226" cy="147" r="4" fill="white" pointer-events="none"/>
+<path d="M191,183 Q200,177 209,183 L205,193 Q200,197 195,193 Z" fill="#FF8FAB" pointer-events="none"/>
+<path d="M190,205 Q200,215 210,205" fill="none" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
+<line x1="152" y1="194" x2="108" y2="186" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
+<line x1="152" y1="202" x2="108" y2="202" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
+<line x1="248" y1="194" x2="292" y2="186" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
+<line x1="248" y1="202" x2="292" y2="202" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
+${L(22,22,1,13)}${L(22,240,2,13)}${L(350,55,3,12)}${L(200,355,4,13)}
+${L(200,300,5,13)}${L(200,282,6,13)}${L(200,138,7,13)}
+${L(135,72,8,11)}${L(265,72,9,11)}${L(135,100,10,10)}${L(265,100,11,10)}
+${L(200,215,12,12)}${L(200,183,13,9)}${L(170,150,14,11)}${L(230,150,15,11)}
+${L(148,378,16,11)}${L(252,378,17,11)}${L(340,278,18,12)}${L(356,195,19,11)}
+${L(200,240,20,11)}
 `)},
 
 // 10 烏龜
 {id:10,name:'烏龜',emoji:'🐢',
 palette:[
-  {n:1,c:'#87CEEB',label:'水藍'},{n:2,c:'#2E8B57',label:'深綠'},
-  {n:3,c:'#8BC34A',label:'草綠'},{n:4,c:'#3CB371',label:'中綠'},
-  {n:5,c:'#228B22',label:'墨綠'},{n:6,c:'#1a6b3a',label:'暗綠'},
-  {n:7,c:'#AED581',label:'嫩綠'}
+  {n:1,c:'#42A5F5',label:'天藍'},{n:2,c:'#1565C0',label:'深藍'},
+  {n:3,c:'#2E7D32',label:'深綠'},{n:4,c:'#558B2F',label:'暗綠'},
+  {n:5,c:'#7CB342',label:'草綠'},{n:6,c:'#33691E',label:'墨綠'},
+  {n:7,c:'#9CCC65',label:'嫩綠'},{n:8,c:'#AED581',label:'淡綠'},
+  {n:9,c:'#8D6E63',label:'棕褐'},{n:10,c:'#6D4C41',label:'深棕'},
+  {n:11,c:'#795548',label:'紅棕'},{n:12,c:'#5D4037',label:'暗棕'},
+  {n:13,c:'#4E342E',label:'深褐'},{n:14,c:'#66BB6A',label:'翠綠'},
+  {n:15,c:'#F9A825',label:'金黃'},{n:16,c:'#FF6F00',label:'橙黃'},
+  {n:17,c:'#FFAB91',label:'蜜桃'},{n:18,c:'#E91E63',label:'玫紅'},
+  {n:19,c:'#29B6F6',label:'水藍'},{n:20,c:'#4FC3F7',label:'淡藍'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<path class="region" data-group="7" id="r7_tail" d="M186,350 C182,368 180,390 183,405 L200,410 L217,405 C220,390 218,368 214,350 C208,342 192,342 186,350 Z" ${S2}/>
-<path class="region" data-group="6" id="r6_bll" d="M90,272 C62,290 28,302 8,322 C4,340 12,355 30,352 C55,346 80,320 98,298 Z" ${S}/>
-<path class="region" data-group="6" id="r6_blr" d="M310,272 C338,290 372,302 392,322 C396,340 388,355 370,352 C345,346 320,320 302,298 Z" ${S}/>
-<path class="region" data-group="5" id="r5_fl" d="M93,158 C65,142 28,136 8,152 C2,166 8,182 24,185 C48,190 78,178 100,168 Z" ${S}/>
-<path class="region" data-group="5" id="r5_fr" d="M307,158 C335,142 372,136 392,152 C398,166 392,182 376,185 C352,190 322,178 300,168 Z" ${S}/>
-<ellipse class="region" data-group="2" id="r2_shell" cx="200" cy="218" rx="118" ry="142" ${S}/>
-<circle class="region" data-group="3" id="r3_p1" cx="200" cy="178" r="30" ${S2}/>
-<circle class="region" data-group="3" id="r3_p2" cx="162" cy="215" r="24" ${S2}/>
-<circle class="region" data-group="3" id="r3_p3" cx="238" cy="215" r="24" ${S2}/>
-<circle class="region" data-group="3" id="r3_p4" cx="200" cy="252" r="24" ${S2}/>
-<circle class="region" data-group="3" id="r3_p5" cx="162" cy="285" r="20" ${S2}/>
-<circle class="region" data-group="3" id="r3_p6" cx="238" cy="285" r="20" ${S2}/>
-<circle class="region" data-group="3" id="r3_p7" cx="200" cy="315" r="20" ${S2}/>
-<path class="region" data-group="4" id="r4_hd" d="M175,90 C178,70 186,50 200,44 C214,50 222,70 225,90 C222,106 214,115 200,118 C186,115 178,106 175,90 Z" ${S}/>
-<circle cx="190" cy="78" r="7" fill="white" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<circle cx="210" cy="78" r="7" fill="white" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-<circle cx="191" cy="79" r="4" fill="#2c3e50" pointer-events="none"/>
-<circle cx="211" cy="79" r="4" fill="#2c3e50" pointer-events="none"/>
-<path d="M190,95 Q200,102 210,95" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
-${L(22,22,1,13)}${L(200,218,2)}
-${L(200,178,3,11)}${L(162,215,3,10)}${L(238,215,3,10)}${L(200,252,3,10)}
-${L(162,285,3,10)}${L(238,285,3,10)}${L(200,315,3,10)}
-${L(200,75,4,11)}${L(40,162,5,12)}${L(360,162,5,12)}
-${L(38,312,6,12)}${L(362,312,6,12)}${L(200,385,7,11)}
+<rect class="region" data-group="1" id="r1_wu" x="0" y="0" width="400" height="190" ${S}/>
+<rect class="region" data-group="2" id="r2_wl" x="0" y="190" width="400" height="210" ${S}/>
+<ellipse class="region" data-group="3" id="r3_sw" cx="30" cy="310" rx="12" ry="55" ${S}/>
+<ellipse class="region" data-group="18" id="r18_co" cx="362" cy="385" rx="28" ry="15" ${S}/>
+<ellipse class="region" data-group="19" id="r19_fi" cx="340" cy="70" rx="25" ry="14" ${S}/>
+<circle class="region" data-group="20" id="r20_bb" cx="295" cy="45" r="18" ${S}/>
+<path class="region" data-group="9" id="r9_lfl" d="M95,192 C68,178 42,162 28,148 C18,136 22,122 36,124 C52,126 72,150 94,172 Z" ${S}/>
+<path class="region" data-group="10" id="r10_rfl" d="M305,192 C332,178 358,162 372,148 C382,136 378,122 364,124 C348,126 328,150 306,172 Z" ${S}/>
+<path class="region" data-group="11" id="r11_lbl" d="M92,298 C66,316 36,332 18,352 C8,366 14,380 28,376 C46,370 68,346 90,320 Z" ${S}/>
+<path class="region" data-group="12" id="r12_rbl" d="M308,298 C334,316 364,332 382,352 C392,366 386,380 372,376 C354,370 332,346 310,320 Z" ${S}/>
+<path class="region" data-group="13" id="r13_tl" d="M186,360 C180,378 180,398 190,406 L200,410 L210,406 C220,398 220,378 214,360 C208,352 192,352 186,360 Z" ${S}/>
+<ellipse class="region" data-group="4" id="r4_so" cx="200" cy="228" rx="115" ry="138" ${S}/>
+<ellipse class="region" data-group="5" id="r5_sm" cx="200" cy="228" rx="80" ry="100" ${S}/>
+<circle class="region" data-group="6" id="r6_sc" cx="200" cy="215" r="30" ${S2}/>
+<circle class="region" data-group="7" id="r7_pa1" cx="200" cy="175" r="22" ${S2}/>
+<circle class="region" data-group="7" id="r7_pa2" cx="160" cy="215" r="22" ${S2}/>
+<circle class="region" data-group="7" id="r7_pa3" cx="240" cy="215" r="22" ${S2}/>
+<circle class="region" data-group="8" id="r8_pb1" cx="160" cy="260" r="22" ${S2}/>
+<circle class="region" data-group="8" id="r8_pb2" cx="240" cy="260" r="22" ${S2}/>
+<circle class="region" data-group="8" id="r8_pb3" cx="200" cy="295" r="22" ${S2}/>
+<ellipse class="region" data-group="14" id="r14_hd" cx="200" cy="90" rx="32" ry="36" ${S}/>
+<ellipse class="region" data-group="17" id="r17_mo" cx="200" cy="68" rx="18" ry="12" ${S2}/>
+<circle class="region" data-group="15" id="r15_le" cx="188" cy="82" r="8" ${S2}/>
+<circle class="region" data-group="16" id="r16_re" cx="212" cy="82" r="8" ${S2}/>
+<circle cx="188" cy="82" r="4" fill="#2c3e50" pointer-events="none"/>
+<circle cx="212" cy="82" r="4" fill="#2c3e50" pointer-events="none"/>
+<circle cx="186" cy="80" r="1.5" fill="white" pointer-events="none"/>
+<circle cx="210" cy="80" r="1.5" fill="white" pointer-events="none"/>
+<path d="M194,72 Q200,76 206,72" fill="none" stroke="#2c3e50" stroke-width="1.5" pointer-events="none"/>
+${L(22,22,1,13)}${L(22,210,2,13)}${L(30,310,3,10)}
+${L(88,228,4,12)}${L(200,320,5,13)}${L(200,215,6,12)}
+${L(200,175,7,11)}${L(160,215,7,10)}${L(240,215,7,10)}
+${L(160,260,8,10)}${L(240,260,8,10)}${L(200,295,8,10)}
+${L(58,162,9,11)}${L(342,162,10,11)}${L(55,335,11,11)}${L(345,335,12,11)}
+${L(200,382,13,11)}${L(200,112,14,12)}${L(188,82,15,9)}${L(212,82,16,9)}
+${L(200,68,17,9)}${L(362,385,18,11)}${L(340,70,19,11)}${L(295,45,20,11)}
 `)},
 
 // 11 小熊
 {id:11,name:'小熊',emoji:'🐻',
 palette:[
-  {n:1,c:'#87CEEB',label:'天藍'},
-  {n:2,c:'#E8A04A',label:'琥珀'},
-  {n:3,c:'#FF69B4',label:'粉紅'},
-  {n:4,c:'#FFF176',label:'黃色'},
-  {n:5,c:'#FFAB91',label:'蜜桃'},
-  {n:6,c:'#6D4C41',label:'深棕'},
-  {n:7,c:'#212121',label:'深黑'}
+  {n:1,c:'#87CEEB',label:'天藍'},{n:2,c:'#388E3C',label:'草綠'},
+  {n:3,c:'#795548',label:'樹棕'},{n:4,c:'#E8A04A',label:'琥珀'},
+  {n:5,c:'#D4922A',label:'暗金'},{n:6,c:'#FF9800',label:'橙色'},
+  {n:7,c:'#FFCA28',label:'亮黃'},{n:8,c:'#FF69B4',label:'粉紅'},
+  {n:9,c:'#FF1493',label:'玫粉'},{n:10,c:'#FFD700',label:'金黃'},
+  {n:11,c:'#FFAB91',label:'蜜桃'},{n:12,c:'#212121',label:'深黑'},
+  {n:13,c:'#8D6E63',label:'棕色'},{n:14,c:'#6D4C41',label:'深棕'},
+  {n:15,c:'#5D4037',label:'暗棕'},{n:16,c:'#4E342E',label:'深褐'},
+  {n:17,c:'#43A047',label:'翠綠'},{n:18,c:'#2E7D32',label:'深綠'},
+  {n:19,c:'#FFA000',label:'蜂蜜'},{n:20,c:'#FF5722',label:'火紅'}
 ],
 svg:mksvg(`
-<rect class="region" data-group="1" id="r1_bg" x="0" y="0" width="400" height="400" fill="white" stroke="none"/>
-<circle class="region" data-group="2" id="r2_loe" cx="125" cy="98" r="33" ${S}/>
-<circle class="region" data-group="2" id="r2_roe" cx="275" cy="98" r="33" ${S}/>
-<ellipse class="region" data-group="2" id="r2_body" cx="200" cy="300" rx="125" ry="100" ${S}/>
-<circle class="region" data-group="2" id="r2_head" cx="200" cy="175" r="90" ${S}/>
-<circle class="region" data-group="3" id="r3_lie" cx="125" cy="96" r="19" ${S2}/>
-<circle class="region" data-group="3" id="r3_rie" cx="275" cy="96" r="19" ${S2}/>
-<ellipse class="region" data-group="4" id="r4_belly" cx="200" cy="315" rx="68" ry="58" ${S2}/>
-<ellipse class="region" data-group="6" id="r6_lpaw" cx="92" cy="328" rx="32" ry="22" ${S}/>
-<ellipse class="region" data-group="6" id="r6_rpaw" cx="308" cy="328" rx="32" ry="22" ${S}/>
-<ellipse class="region" data-group="6" id="r6_lft" cx="152" cy="382" rx="40" ry="18" ${S}/>
-<ellipse class="region" data-group="6" id="r6_rft" cx="248" cy="382" rx="40" ry="18" ${S}/>
-<ellipse class="region" data-group="5" id="r5_mzz" cx="200" cy="202" rx="44" ry="32" ${S2}/>
-<ellipse class="region" data-group="7" id="r7_nose" cx="200" cy="194" rx="16" ry="10" ${S2}/>
-<circle cx="172" cy="158" r="15" fill="white" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
-<circle cx="228" cy="158" r="15" fill="white" stroke="#2c3e50" stroke-width="2" pointer-events="none"/>
-<circle cx="172" cy="160" r="9" fill="#2C1810" pointer-events="none"/>
-<circle cx="228" cy="160" r="9" fill="#2C1810" pointer-events="none"/>
-<circle cx="168" cy="155" r="3.5" fill="white" pointer-events="none"/>
-<circle cx="224" cy="155" r="3.5" fill="white" pointer-events="none"/>
+<rect class="region" data-group="1" id="r1_sky" x="0" y="0" width="400" height="230" ${S}/>
+<rect class="region" data-group="2" id="r2_grs" x="0" y="230" width="400" height="170" ${S}/>
+<rect class="region" data-group="3" id="r3_tr" x="330" y="58" width="30" height="178" ${S}/>
+<ellipse class="region" data-group="19" id="r19_hp" cx="352" cy="356" rx="22" ry="24" ${S}/>
+<circle class="region" data-group="20" id="r20_fl" cx="60" cy="345" r="22" ${S}/>
+<circle class="region" data-group="4" id="r4_leo" cx="125" cy="96" r="33" ${S}/>
+<circle class="region" data-group="5" id="r5_reo" cx="275" cy="96" r="33" ${S}/>
+<ellipse class="region" data-group="6" id="r6_bd" cx="200" cy="300" rx="125" ry="100" ${S}/>
+<ellipse class="region" data-group="15" id="r15_lft" cx="152" cy="384" rx="40" ry="18" ${S}/>
+<ellipse class="region" data-group="16" id="r16_rft" cx="248" cy="384" rx="40" ry="18" ${S}/>
+<ellipse class="region" data-group="13" id="r13_lp" cx="92" cy="330" rx="32" ry="22" ${S}/>
+<ellipse class="region" data-group="14" id="r14_rp" cx="308" cy="330" rx="32" ry="22" ${S}/>
+<circle class="region" data-group="7" id="r7_hd" cx="200" cy="172" r="90" ${S}/>
+<circle class="region" data-group="8" id="r8_lei" cx="125" cy="96" r="19" ${S2}/>
+<circle class="region" data-group="9" id="r9_rei" cx="275" cy="96" r="19" ${S2}/>
+<ellipse class="region" data-group="10" id="r10_bl" cx="200" cy="315" rx="68" ry="58" ${S2}/>
+<ellipse class="region" data-group="11" id="r11_mz" cx="200" cy="202" rx="44" ry="32" ${S}/>
+<ellipse class="region" data-group="12" id="r12_ns" cx="200" cy="190" rx="16" ry="10" ${S2}/>
+<circle class="region" data-group="17" id="r17_le" cx="170" cy="158" r="15" ${S2}/>
+<circle class="region" data-group="18" id="r18_re" cx="230" cy="158" r="15" ${S2}/>
+<circle cx="170" cy="160" r="9" fill="#2C1810" pointer-events="none"/>
+<circle cx="230" cy="160" r="9" fill="#2C1810" pointer-events="none"/>
+<circle cx="166" cy="155" r="3.5" fill="white" pointer-events="none"/>
+<circle cx="226" cy="155" r="3.5" fill="white" pointer-events="none"/>
 <path d="M190,216 Q200,226 210,216" fill="none" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" pointer-events="none"/>
-<circle cx="80" cy="318" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
-<circle cx="92" cy="315" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
-<circle cx="104" cy="318" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
-<circle cx="296" cy="318" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
-<circle cx="308" cy="315" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
-<circle cx="320" cy="318" r="5" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
-${L(22,22,1,13)}
-${L(200,118,2)}${L(315,300,2,12)}${L(105,76,2,10)}${L(295,76,2,10)}
-${L(125,98,3,10)}${L(275,98,3,10)}
-${L(200,318,4,12)}
-${L(200,208,5,12)}
-${L(92,328,6,11)}${L(308,328,6,11)}${L(152,382,6,10)}${L(248,382,6,10)}
-${L(200,194,7,10)}
+<circle cx="80" cy="320" r="4" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+<circle cx="92" cy="317" r="4" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+<circle cx="104" cy="320" r="4" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+<circle cx="296" cy="320" r="4" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+<circle cx="308" cy="317" r="4" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+<circle cx="320" cy="320" r="4" fill="#2c3e50" opacity="0.4" pointer-events="none"/>
+${L(22,22,1,13)}${L(22,250,2,13)}${L(345,148,3,12)}
+${L(125,65,4,11)}${L(275,65,5,11)}${L(200,380,6,13)}${L(200,135,7,13)}
+${L(125,96,8,10)}${L(275,96,9,10)}${L(200,315,10,12)}
+${L(200,218,11,12)}${L(200,190,12,9)}${L(92,330,13,11)}${L(308,330,14,11)}
+${L(152,384,15,10)}${L(248,384,16,10)}${L(170,158,17,10)}${L(230,158,18,10)}
+${L(352,356,19,11)}${L(60,345,20,11)}
 `)}
 
 ];
